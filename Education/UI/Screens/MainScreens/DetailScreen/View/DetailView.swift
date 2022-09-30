@@ -1,5 +1,5 @@
 //
-//  MainScreenView.swift
+//  MainView.swift
 //  Education
 //
 //  Created by Nikita Ezhov on 30.09.2022.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class MainView: UIView {
+final class DetailView: UIView {
     
+
     private let label: UILabel = {
         let label = UILabel()
-        label.text = "Education"
         label.font = MainFont.bold(size: 24)
+        label.textAlignment = .center
         return label
     }()
     
@@ -27,6 +28,10 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(model: MainModel) {
+        label.text = "Education = \(model.id) \(model.title) \(model.subtitle)"
+    }
+    
     private func addElements() {
         addSubview(label)
         makeConstraints()
@@ -38,4 +43,5 @@ final class MainView: UIView {
             make.centerY.centerX.equalToSuperview()
         }
     }
+    
 }

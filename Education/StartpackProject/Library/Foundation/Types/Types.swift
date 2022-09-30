@@ -18,3 +18,4 @@ typealias DoubleClosure = (Double) -> Void
 typealias IntArrayClosure = ([Int]) -> Void
 typealias StringArrayClosure = ([String]) -> Void
 typealias DateClosure = (Date) -> Void
+typealias ModelClosure = (MainModel) -> Void

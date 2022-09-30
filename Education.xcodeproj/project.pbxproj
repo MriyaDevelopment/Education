@@ -46,6 +46,10 @@
 		63D7211428E7385B0026D7E5 /* UIViewHiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211328E7385B0026D7E5 /* UIViewHiding.swift */; };
 		63D7211628E738BE0026D7E5 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211528E738BE0026D7E5 /* StartCoordinator.swift */; };
 		63D7211828E73D300026D7E5 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211728E73D300026D7E5 /* UIView.swift */; };
+		63D7211C28E74F420026D7E5 /* MainScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */; };
+		63D7212228E752770026D7E5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212128E752770026D7E5 /* DetailView.swift */; };
+		63D7212428E752940026D7E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212328E752940026D7E5 /* DetailViewController.swift */; };
+		63D7212628E7553D0026D7E5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212528E7553D0026D7E5 /* MainModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +95,10 @@
 		63D7211328E7385B0026D7E5 /* UIViewHiding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHiding.swift; sourceTree = "<group>"; };
 		63D7211528E738BE0026D7E5 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		63D7211728E73D300026D7E5 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenDataModel.swift; sourceTree = "<group>"; };
+		63D7212128E752770026D7E5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		63D7212328E752940026D7E5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		63D7212528E7553D0026D7E5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		A283727850B7682952F8EAC5 /* Pods_Education.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Education.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -347,7 +355,7 @@
 		63D720F328E735AC0026D7E5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				63D720F528E735BB0026D7E5 /* MainScreen */,
+				63D720F528E735BB0026D7E5 /* MainScreens */,
 				63D720F428E735B50026D7E5 /* LaunchScreen */,
 			);
 			path = Screens;
@@ -362,13 +370,13 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		63D720F528E735BB0026D7E5 /* MainScreen */ = {
+		63D720F528E735BB0026D7E5 /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
-				63D720F928E735D80026D7E5 /* View */,
-				63D720F828E735D40026D7E5 /* ViewController */,
+				63D7211E28E7524F0026D7E5 /* DetailScreen */,
+				63D7211D28E752420026D7E5 /* MainScreen */,
 			);
-			path = MainScreen;
+			path = MainScreens;
 			sourceTree = "<group>";
 		};
 		63D720F628E735C80026D7E5 /* ViewController */ = {
@@ -387,20 +395,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		63D720F828E735D40026D7E5 /* ViewController */ = {
+		63D720F828E735D40026D7E5 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				63D7210028E735FF0026D7E5 /* MainScreenViewController.swift */,
 			);
-			path = ViewController;
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
-		63D720F928E735D80026D7E5 /* View */ = {
+		63D720F928E735D80026D7E5 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				63D720FE28E735F60026D7E5 /* MainScreenView.swift */,
 			);
-			path = View;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		63D7210228E736E30026D7E5 /* HelperUI */ = {
@@ -432,6 +440,50 @@
 				63D7211728E73D300026D7E5 /* UIView.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		63D7211A28E74F2E0026D7E5 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */,
+				63D7212528E7553D0026D7E5 /* MainModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		63D7211D28E752420026D7E5 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63D7211A28E74F2E0026D7E5 /* DataModel */,
+				63D720F928E735D80026D7E5 /* MainView */,
+				63D720F828E735D40026D7E5 /* MainViewController */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		63D7211E28E7524F0026D7E5 /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63D7212028E7525B0026D7E5 /* View */,
+				63D7211F28E752550026D7E5 /* ViewController */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		63D7211F28E752550026D7E5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63D7212328E752940026D7E5 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		63D7212028E7525B0026D7E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63D7212128E752770026D7E5 /* DetailView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D103257E1F7506E6BAEB6F12 /* Pods */ = {
@@ -569,6 +621,7 @@
 				63D720C528E731940026D7E5 /* BaseColor.swift in Sources */,
 				63D720BC28E7300C0026D7E5 /* RouterProtocol.swift in Sources */,
 				63D720BA28E72FEF0026D7E5 /* Coordinator.swift in Sources */,
+				63D7212228E752770026D7E5 /* DetailView.swift in Sources */,
 				63D7210D28E737730026D7E5 /* InputForm + constraints.swift in Sources */,
 				63D720C728E731C80026D7E5 /* AppIcons.swift in Sources */,
 				63D720C328E7318C0026D7E5 /* SchemeColor.swift in Sources */,
@@ -581,11 +634,14 @@
 				63D7210428E736F30026D7E5 /* NavigationBar.swift in Sources */,
 				63D720B828E72FAB0026D7E5 /* AppDelegate.swift in Sources */,
 				63D720C128E731650026D7E5 /* BaseFont.swift in Sources */,
+				63D7211C28E74F420026D7E5 /* MainScreenDataModel.swift in Sources */,
 				63D720F228E735610026D7E5 /* ApiError.swift in Sources */,
 				63D7210828E7371F0026D7E5 /* NavigationBarTitle.swift in Sources */,
 				63D7210F28E737870026D7E5 /* InputForm + UITextFieldDelegate.swift in Sources */,
 				63D7210128E735FF0026D7E5 /* MainScreenViewController.swift in Sources */,
 				63D720FD28E735EE0026D7E5 /* LaunchScreenViewController.swift in Sources */,
+				63D7212628E7553D0026D7E5 /* MainModel.swift in Sources */,
+				63D7212428E752940026D7E5 /* DetailViewController.swift in Sources */,
 				63D720CB28E7322B0026D7E5 /* MainCoordinator.swift in Sources */,
 				63D720CD28E7327F0026D7E5 /* DI.swift in Sources */,
 				63D720FB28E735E20026D7E5 /* LaunchScreenView.swift in Sources */,

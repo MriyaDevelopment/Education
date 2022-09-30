@@ -25,6 +25,14 @@ final class MainCoordinator: BaseCoordinator {
     
     private func showMainScreen() {
         let screen = screenFactory.makeMainScreen()
+        screen.buttonClicked = { [weak self] model in
+            self?.showDetailScreen(model: model)
+        }
         router.setRootModule(screen, hideBar: true)
+    }
+    
+    private func showDetailScreen(model: MainModel) {
+        let screen = screenFactory.makeDetailScreen(model: model)
+        router.push(screen, animated: true)
     }
 }

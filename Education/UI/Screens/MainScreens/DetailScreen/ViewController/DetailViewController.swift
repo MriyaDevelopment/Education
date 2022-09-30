@@ -1,5 +1,5 @@
 //
-//  MainScreenViewController.swift
+//  DetailViewController.swift
 //  Education
 //
 //  Created by Nikita Ezhov on 30.09.2022.
@@ -7,9 +7,12 @@
 
 import UIKit
 
-final class MainViewController<View: MainView>: BaseViewController<View> {
-        
-    init() {
+final class DetailViewController<View: DetailView>: BaseViewController<View> {
+    
+    private var model: MainModel
+    
+    init(model: MainModel) {
+        self.model = model
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -19,6 +22,8 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rootView.configure(model: model)
         navBar.hideView()
     }
+    
 }
