@@ -156,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				63D720E528E735080026D7E5 /* Network */,
-				63D720B528E72F880026D7E5 /* Fonts */,
 				63D720B428E72F7C0026D7E5 /* Library */,
 				63D720B328E72F710026D7E5 /* FontColorIcon */,
 				63D720B228E72F6D0026D7E5 /* DI */,
@@ -228,13 +227,6 @@
 				63D720D228E733810026D7E5 /* Foundation */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		63D720B528E72F880026D7E5 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		63D720BD28E731270026D7E5 /* FontScheme */ = {

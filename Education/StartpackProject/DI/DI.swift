@@ -72,6 +72,7 @@ final class ScreenFactory: ScreenFactoryProtocol {
 
 protocol CoordinatorFactoryProtocol {
     func makeApplicationCoordinator(router: RouterProtocol) -> ApplicationCoordinator
+    func makeStartCoordinator(router: RouterProtocol) -> StartCoordinator 
     func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator
 }
 
@@ -93,5 +94,6 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
     
     func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator {
         MainCoordinator(router: router, screenFactory: screenFactory)
+        
     }
 }
