@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63D7208828E6D0910026D7E5 /* education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = education.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63D7208828E6D0910026D7E5 /* Education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Education.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D7208B28E6D0910026D7E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63D7208F28E6D0910026D7E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63D7209228E6D0910026D7E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		63D7207F28E6D0910026D7E5 = {
 			isa = PBXGroup;
 			children = (
-				63D7208A28E6D0910026D7E5 /* education */,
+				63D7208A28E6D0910026D7E5 /* Education */,
 				63D7208928E6D0910026D7E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		63D7208928E6D0910026D7E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63D7208828E6D0910026D7E5 /* education.app */,
+				63D7208828E6D0910026D7E5 /* Education.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63D7208A28E6D0910026D7E5 /* education */ = {
+		63D7208A28E6D0910026D7E5 /* Education */ = {
 			isa = PBXGroup;
 			children = (
 				63D7208B28E6D0910026D7E5 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				63D7209628E6D0930026D7E5 /* LaunchScreen.storyboard */,
 				63D7209928E6D0930026D7E5 /* Info.plist */,
 			);
-			path = education;
+			path = Education;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63D7208728E6D0910026D7E5 /* education */ = {
+		63D7208728E6D0910026D7E5 /* Education */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63D7209C28E6D0930026D7E5 /* Build configuration list for PBXNativeTarget "education" */;
+			buildConfigurationList = 63D7209C28E6D0930026D7E5 /* Build configuration list for PBXNativeTarget "Education" */;
 			buildPhases = (
 				63D7208428E6D0910026D7E5 /* Sources */,
 				63D7208528E6D0910026D7E5 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = education;
+			name = Education;
 			productName = education;
-			productReference = 63D7208828E6D0910026D7E5 /* education.app */;
+			productReference = 63D7208828E6D0910026D7E5 /* Education.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63D7208328E6D0910026D7E5 /* Build configuration list for PBXProject "education" */;
+			buildConfigurationList = 63D7208328E6D0910026D7E5 /* Build configuration list for PBXProject "Education" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63D7208728E6D0910026D7E5 /* education */,
+				63D7208728E6D0910026D7E5 /* Education */,
 			);
 		};
 /* End PBXProject section */
@@ -335,7 +335,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63D7208328E6D0910026D7E5 /* Build configuration list for PBXProject "education" */ = {
+		63D7208328E6D0910026D7E5 /* Build configuration list for PBXProject "Education" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D7209A28E6D0930026D7E5 /* Debug */,
@@ -344,7 +344,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63D7209C28E6D0930026D7E5 /* Build configuration list for PBXNativeTarget "education" */ = {
+		63D7209C28E6D0930026D7E5 /* Build configuration list for PBXNativeTarget "Education" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63D7209D28E6D0930026D7E5 /* Debug */,
