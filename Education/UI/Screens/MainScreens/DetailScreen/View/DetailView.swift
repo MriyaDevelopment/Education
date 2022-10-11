@@ -17,6 +17,12 @@ final class DetailView: UIView {
         return label
     }()
     
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = BaseColor.hex_FFFFFF.uiColor()
@@ -28,12 +34,14 @@ final class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(model: MainModel) {
-        label.text = "Education = \(model.id) \(model.title) \(model.subtitle)"
+    func configure(model: MainStruct) {
+        label.text = model.titleText
+        imageView.image = model.backgroundImage
     }
     
     private func addElements() {
         addSubview(label)
+        addSubview(imageView)
         makeConstraints()
     }
     
@@ -41,6 +49,11 @@ final class DetailView: UIView {
         
         label.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
+        }
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.left.right.equalToSuperview().inset(10)
+            make.height.equalTo(200)
         }
     }
     

@@ -9,14 +9,16 @@ import UIKit
 import Combine
 
 final class MainViewController<View: MainView>: BaseViewController<View> {
-        
+    
     var buttonClicked: ModelClosure?
     private var cancalables = Set<AnyCancellable>()
+    private var elements: [MainStruct] = []
+    
     
     init() {
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,9 +29,13 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        elements = MainStruct.placeholderItems
+        rootView.configure(elements: elements)
         subscribeForUpdates()
-        navBar.hideView()
+        
     }
+    
+    
     
     private func onViewEvents(_ event: MainScreenViewEvents) {
         switch event {
@@ -37,4 +43,9 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
             buttonClicked?(model)
         }
     }
+    
+
+    
 }
+
+

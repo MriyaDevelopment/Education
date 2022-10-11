@@ -9,9 +9,9 @@ import UIKit
 
 final class DetailViewController<View: DetailView>: BaseViewController<View> {
     
-    private var model: MainModel
+    private var model: MainStruct
     
-    init(model: MainModel) {
+    init(model: MainStruct) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,7 +23,12 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
     override func viewDidLoad() {
         super.viewDidLoad()
         rootView.configure(model: model)
-        navBar.hideView()
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        let titleView = NavigationBarTitle(title: "Вход", subTitle: "")
+        navBar.addItem(titleView, toPosition: .title)
     }
     
 }

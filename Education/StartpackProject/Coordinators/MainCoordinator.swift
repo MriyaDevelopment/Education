@@ -31,8 +31,10 @@ final class MainCoordinator: BaseCoordinator {
         router.setRootModule(screen, hideBar: true)
     }
     
-    private func showDetailScreen(model: MainModel) {
+    private func showDetailScreen(model: MainStruct) {
         let screen = screenFactory.makeDetailScreen(model: model)
         router.push(screen, animated: true)
     }
 }
+
+

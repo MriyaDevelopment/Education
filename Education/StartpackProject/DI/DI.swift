@@ -47,7 +47,7 @@ protocol ScreenFactoryProtocol {
     
     func makeMainScreen() -> MainViewController<MainView>
     
-    func makeDetailScreen(model: MainModel) -> DetailViewController<DetailView>
+    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView>
 
 }
 
@@ -64,7 +64,7 @@ final class ScreenFactory: ScreenFactoryProtocol {
         MainViewController<MainView>()
     }
     
-    func makeDetailScreen(model: MainModel) -> DetailViewController<DetailView> {
+    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView> {
         DetailViewController<DetailView>(model: model)
     }
     
