@@ -50,6 +50,8 @@
 		63D7212228E752770026D7E5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212128E752770026D7E5 /* DetailView.swift */; };
 		63D7212428E752940026D7E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212328E752940026D7E5 /* DetailViewController.swift */; };
 		63D7212628E7553D0026D7E5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212528E7553D0026D7E5 /* MainModel.swift */; };
+		EBD3EBCA28ED940C00052022 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3EBC928ED940C00052022 /* LoginViewController.swift */; };
+		EBD3EBCC28ED944C00052022 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD3EBCB28ED944C00052022 /* LoginScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		63D7212328E752940026D7E5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		63D7212528E7553D0026D7E5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		A283727850B7682952F8EAC5 /* Pods_Education.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Education.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD3EBC928ED940C00052022 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EBD3EBCB28ED944C00052022 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +351,7 @@
 		63D720F328E735AC0026D7E5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EBD3EBC828ED93EE00052022 /* LoginScreen */,
 				63D720F528E735BB0026D7E5 /* MainScreens */,
 				63D720F428E735B50026D7E5 /* LaunchScreen */,
 			);
@@ -487,6 +492,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EBD3EBC828ED93EE00052022 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBD3EBC928ED940C00052022 /* LoginViewController.swift */,
+				EBD3EBCB28ED944C00052022 /* LoginScreenView.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -609,6 +623,7 @@
 				63D7210628E737060026D7E5 /* FloatingPanel.swift in Sources */,
 				63D720D928E734450026D7E5 /* UICollectionViewDequeue.swift in Sources */,
 				63D7211628E738BE0026D7E5 /* StartCoordinator.swift in Sources */,
+				EBD3EBCA28ED940C00052022 /* LoginViewController.swift in Sources */,
 				63D7210B28E737650026D7E5 /* InputForm.swift in Sources */,
 				63D720C528E731940026D7E5 /* BaseColor.swift in Sources */,
 				63D720BC28E7300C0026D7E5 /* RouterProtocol.swift in Sources */,
@@ -629,6 +644,7 @@
 				63D7211C28E74F420026D7E5 /* MainScreenDataModel.swift in Sources */,
 				63D720F228E735610026D7E5 /* ApiError.swift in Sources */,
 				63D7210828E7371F0026D7E5 /* NavigationBarTitle.swift in Sources */,
+				EBD3EBCC28ED944C00052022 /* LoginScreenView.swift in Sources */,
 				63D7210F28E737870026D7E5 /* InputForm + UITextFieldDelegate.swift in Sources */,
 				63D7210128E735FF0026D7E5 /* MainScreenViewController.swift in Sources */,
 				63D720FD28E735EE0026D7E5 /* LaunchScreenViewController.swift in Sources */,

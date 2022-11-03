@@ -11,6 +11,12 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
     
     private var model: MainModel
     
+    var guide: UILayoutGuide {
+            get {
+                rootView.guide
+            }
+        }
+    
     init(model: MainModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
@@ -23,7 +29,8 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
     override func viewDidLoad() {
         super.viewDidLoad()
         rootView.configure(model: model)
-        navBar.hideView()
+        navBar.showView()
+        navBar.showBottomLine()
     }
     
 }

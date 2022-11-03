@@ -22,9 +22,9 @@ final class MainCoordinator: BaseCoordinator {
     override func start() {
         showMainScreen()
     }
-    
+    //Вопрос - зачем тут buttonClicked
     private func showMainScreen() {
-        let screen = screenFactory.makeMainScreen()
+        let screen = screenFactory.makeLoginScreen()
         screen.buttonClicked = { [weak self] model in
             self?.showDetailScreen(model: model)
         }
@@ -33,6 +33,6 @@ final class MainCoordinator: BaseCoordinator {
     
     private func showDetailScreen(model: MainModel) {
         let screen = screenFactory.makeDetailScreen(model: model)
-        router.push(screen, animated: true)
+        router.present(screen, animated: true, guide: screen.guide)
     }
 }
