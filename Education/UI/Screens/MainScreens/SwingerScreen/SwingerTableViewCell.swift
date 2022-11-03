@@ -18,7 +18,7 @@ final class SwingerTableViewCell: UITableViewCell {
     
     private let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .black
         view.layer.shadowRadius = 10
         view.layer.shadowOpacity = 0.1
         view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
