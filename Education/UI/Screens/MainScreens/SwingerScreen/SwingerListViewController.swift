@@ -1,14 +1,14 @@
 //
-//  MainScreenViewController.swift
+//  SwingerListViewController.swift
 //  Education
 //
-//  Created by Nikita Ezhov on 30.09.2022.
+//  Created by Роман Приладных on 03.11.2022.
 //
 
 import UIKit
 import Combine
 
-final class MainViewController<View: MainView>: BaseViewController<View> {
+final class SwingerListViewController<View: SwingerListView>: BaseViewController<View> {
     
     var buttonClicked: ModelClosure?
     var button: ModelClosure?
@@ -53,5 +53,6 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
 
     
 }
+
 
 

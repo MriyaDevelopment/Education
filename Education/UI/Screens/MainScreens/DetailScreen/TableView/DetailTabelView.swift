@@ -1,16 +1,14 @@
 //
-//  MainView.swift
+//  DetailTabelView.swift
 //  Education
 //
-//  Created by Nikita Ezhov on 30.09.2022.
+//  Created by Роман Приладных on 14.10.2022.
 //
 
 import UIKit
+import Combine
 
-final class DetailView: UIView {
-     
-  
-
+final class DetailTableView: UIView {
     
     private var contentView: UIView = {
         let view = UIView()
@@ -44,29 +42,41 @@ final class DetailView: UIView {
     }
     
     func configure(model: MainStruct) {
-        label.text = model.titleText
+//        label.text = model.titleText
+        
         imageView.image = model.backgroundImage
+        print("Запуск пизды с таблицы \(model.subtitleText)")
     }
     
     
     
     
     private func addElements() {
-        addSubview(label)
+//        addSubview(label)
         addSubview(imageView)
         makeConstraints()
     }
     
     private func makeConstraints() {
         
-        label.snp.makeConstraints { make in
-            make.centerY.centerX.equalToSuperview()
-        }
+//        label.snp.makeConstraints { make in
+//            make.centerY.centerX.equalToSuperview()
+//        }
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.left.right.equalToSuperview().inset(10)
             make.height.equalTo(200)
         }
+    
     }
     
 }
+
+    
+    
+    
+    
+    
+    
+    
+

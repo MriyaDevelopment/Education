@@ -10,4 +10,5 @@ import Foundation
 enum MainScreenViewEvents {
     
     case buttonClicked(MainStruct)
+    case cellClicked(MainStruct)
 }

@@ -9,14 +9,12 @@ import UIKit
 
 final class MainCollectionViewCell: UICollectionViewCell {
     
-//    let events = PassthroughSubject<MainScreenViewEvents, Never>()
-    
-    
+    var clickAction: VoidClosure?
 
-    
     private var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -32,7 +30,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
         let label = UIButton()
         label.layer.borderColor = UIColor.systemBlue.cgColor
         label.layer.borderWidth = 2.0
-        label.isUserInteractionEnabled = true
         label.layer.cornerRadius = 10.0
         return label
     }()
@@ -48,6 +45,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
         
         addElements()
+        addTargets()
     }
     
     required init?(coder: NSCoder) {
@@ -67,9 +65,17 @@ final class MainCollectionViewCell: UICollectionViewCell {
         backgroundImageView.addSubview(titleLabel)
         backgroundImageView.addSubview(button)
         makeConstraints()
+    
     }
     
+    private func addTargets () {
+        button.addTarget(self, action: #selector(clickedAction2), for: .touchUpInside)
+    }
     
+    @objc private func clickedAction2() {
+        clickAction?()
+        
+    }
     
     private func makeConstraints() {
         

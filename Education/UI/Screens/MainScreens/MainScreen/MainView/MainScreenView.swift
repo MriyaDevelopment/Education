@@ -12,25 +12,20 @@ import Combine
 
 final class MainView: UIView {
 
-
-
-
     let events = PassthroughSubject<MainScreenViewEvents, Never>()
 
-    
-    
     private var contentView: UIView = {
         let view = UIView()
         return view
     }()
     
     private var elements: [MainStruct] = []
+
     
  
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.font = MainFont.bold(size: 20)
-//        label.textColor = BaseColor.hex_232324.uiColor()
         label.text = "Восемь планет солнечной системы"
         label.textAlignment = .center
         return label
@@ -99,12 +94,6 @@ final class MainView: UIView {
             make.left.right.equalToSuperview()
         }
         
-
-//        subscribesButton.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(titleLabel)
-//            make.right.equalToSuperview().inset(16)
-//        }
-
         subTitleLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(21)
             make.right.equalToSuperview().inset(16)
@@ -129,15 +118,6 @@ final class MainView: UIView {
         mainCollectionView.reloadData()
     }
     
-    
-    
-  
-    @objc private func clickedAction() {
-        let model = MainStruct(id: 1, backgroundImage: UIImage(named: "")!, type: "", titleText: "", subtitleText: "")
-            events.send(.buttonClicked(model))
-        }
-   
-
 }
 
 extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -149,78 +129,15 @@ extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCollectionReusableCell(withType: MainCollectionViewCell.self, for: indexPath)
         cell.configure(item: elements[indexPath.row])
-        
+        cell.clickAction = { [weak self] in
+            if let model = self?.elements[indexPath.row] {
+                self?.events.send(.buttonClicked(model))
+            }
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           events.send(.buttonClicked(elements[indexPath.row]))
+        events.send(.cellClicked(elements[indexPath.row]))
        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //    private let label: UILabel = {
-    //        let label = UILabel()
-    //        label.text = "Education"
-    //        label.font = MainFont.bold(size: 24)
-    //        return label
-    //    }()
-    //
-    //    private let button: UIButton = {
-    //        let button = UIButton()
-    //        button.setTitle("Click me", for: .normal)
-    //        button.titleLabel?.font = MainFont.bold(size: 20)
-    //        button.setTitleColor(BaseColor.hex_E73626.uiColor(), for: .normal)
-    //        return button
-    //    }()
-    //
-    //    override init(frame: CGRect) {
-    //        super.init(frame: frame)
-    //        backgroundColor = BaseColor.hex_FFFFFF.uiColor()
-    //
-    //        addElements()
-    //        addTargets()
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
-    //
-    //    private func addElements() {
-    //        addSubview(label)
-    //        addSubview(button)
-    //        makeConstraints()
-    //    }
-    //
-    //    private func makeConstraints() {
-    //
-    //        label.snp.makeConstraints { make in
-    //            make.centerY.centerX.equalToSuperview()
-    //        }
-    //
-    //        button.snp.makeConstraints { make in
-    //            make.top.equalTo(label.snp.bottom).offset(25)
-    //            make.centerX.equalToSuperview()
-    //        }
-    //    }
-    //
-     
-    
-    
-    
-    
-    
-    
-    
 }
 

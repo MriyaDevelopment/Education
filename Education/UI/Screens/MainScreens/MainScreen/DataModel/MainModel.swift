@@ -8,22 +8,6 @@ import UIKit
 import SwiftUI
 import Foundation
 
-//public struct MainModel {
-//    var id: Int
-//    var title: String
-//    var subtitle: String
-//}
-
-
-
-enum MainViewEvent {
-    case cellClicked(String)
-    case firstCellClicked
-    case switchToProfile
-}
-
-
-
 struct MainStruct {
     var id: Int
     var backgroundImage: UIImage
@@ -40,6 +24,8 @@ struct MainStruct {
         .init(id: 7, backgroundImage: UIImage(named: "Neptun")!, type: "", titleText: "Солнечная система", subtitleText: "НЕПТУН"),
         .init(id: 8, backgroundImage: UIImage(named: "Pluton")!,  type: "", titleText: "Солнечная система", subtitleText: "ПЛУТОН"),
     ]
+    
+    
     
     
 }

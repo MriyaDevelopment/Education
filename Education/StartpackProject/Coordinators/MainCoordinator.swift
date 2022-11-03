@@ -21,20 +21,49 @@ final class MainCoordinator: BaseCoordinator {
     
     override func start() {
         showMainScreen()
+   
     }
+    
+    
     
     private func showMainScreen() {
         let screen = screenFactory.makeMainScreen()
         screen.buttonClicked = { [weak self] model in
             self?.showDetailScreen(model: model)
         }
+    
+        screen.cellClicked = { [weak self] model in
+            self?.showSwingerList()
+        }
         router.setRootModule(screen, hideBar: true)
     }
+    
     
     private func showDetailScreen(model: MainStruct) {
         let screen = screenFactory.makeDetailScreen(model: model)
         router.push(screen, animated: true)
+      
     }
+    
+    private func showSwingerList() {
+        let screen = screenFactory.makeSwingerScreen()
+        router.push(screen, animated: true)
+      
+    }
+     
+    private func showDetailScreen2(model: MainStruct) {
+//        let screen = screenFactory.makeDetailTableScreen(model: model)
+//        router.push(screen, animated: true)
+        
+    }
+    private func showFreeScreen() {
+        let screen = screenFactory.makeFreeScreen()
+        router.push(screen, animated: true)
+        
+    }
+        
 }
-
+    
+    
+    
 
