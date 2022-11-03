@@ -14,9 +14,11 @@ final class SwingerTableViewCell: UITableViewCell {
     var likeDisableClicked: VoidClosure?
     private var isLiked = false
     
+    ///12345
+    
     private let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .blue
         view.layer.shadowRadius = 10
         view.layer.shadowOpacity = 0.1
         view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
