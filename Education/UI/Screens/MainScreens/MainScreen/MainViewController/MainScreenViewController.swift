@@ -11,7 +11,7 @@ import Combine
 final class MainViewController<View: MainView>: BaseViewController<View> {
     
     var buttonClicked: ModelClosure?
-    var button: ModelClosure?
+//    var button: ModelClosure?
     var cellClicked: ModelClosure?
    
     private var cancalables = Set<AnyCancellable>()

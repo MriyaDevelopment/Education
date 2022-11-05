@@ -31,7 +31,13 @@ final class MainView: UIView {
         return label
     }()
     
-  
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = MainFont.medium(size: 14)
+        label.textColor = BaseColor.hex_F1F1F1.uiColor()
+        label.text = ""
+        return label
+    }()
    
     
     private lazy var gridLayout: UICollectionViewFlowLayout = {
@@ -83,7 +89,6 @@ final class MainView: UIView {
         addSubview(contentView)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(mainCollectionView)
-
         makeConstraints()
     }
 
@@ -103,7 +108,6 @@ final class MainView: UIView {
         mainCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(subTitleLabel.snp.bottom).offset(5)
-        
             make.bottom.equalToSuperview()
             
         }
