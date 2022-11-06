@@ -49,10 +49,10 @@ final class MainCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func configure(item: MainStruct) {
-        self.titleLabel.text = item.titleText
-        self.button.setTitle(item.subtitleText, for: .normal)
-        self.backgroundImageView.image = item.backgroundImage
+    func configure(item: Article) {
+        self.titleLabel.text = item.title
+        self.button.setTitle(item.type?.rawValue, for: .normal)
+        self.backgroundImageView.loadArticleImage(by: item.image ?? "")
     }
 
     

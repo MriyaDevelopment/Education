@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Education/Pods-Education-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework
 ${BUILT_PRODUCTS_DIR}/InputMask/InputMask.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

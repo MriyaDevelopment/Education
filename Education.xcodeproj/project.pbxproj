@@ -15,6 +15,12 @@
 		242508C12914366000E1CD27 /* SwingerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242508C02914366000E1CD27 /* SwingerTableViewCell.swift */; };
 		2459CF8328F9CE3000507DD7 /* DetailTabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459CF8228F9CE3000507DD7 /* DetailTabelView.swift */; };
 		2459CF8528F9CE4A00507DD7 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459CF8428F9CE4A00507DD7 /* DetailTableViewController.swift */; };
+		633883182917F08D001CEB65 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633883172917F08D001CEB65 /* ApiClient.swift */; };
+		6338831A2917F093001CEB65 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633883192917F093001CEB65 /* Service.swift */; };
+		6338831C2917F09B001CEB65 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338831B2917F09B001CEB65 /* Provider.swift */; };
+		6338831E2917F0A2001CEB65 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6338831D2917F0A2001CEB65 /* Response.swift */; };
+		633883232917F46C001CEB65 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633883222917F46C001CEB65 /* UIImageView+Ext.swift */; };
+		633883252917F4B8001CEB65 /* ImagePreloaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633883242917F4B8001CEB65 /* ImagePreloaderView.swift */; };
 		63D7209528E6D0930026D7E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D7209428E6D0930026D7E5 /* Assets.xcassets */; };
 		63D7209828E6D0930026D7E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D7209628E6D0930026D7E5 /* LaunchScreen.storyboard */; };
 		63D720B828E72FAB0026D7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D720B728E72FAB0026D7E5 /* AppDelegate.swift */; };
@@ -68,6 +74,12 @@
 		2459CF8228F9CE3000507DD7 /* DetailTabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTabelView.swift; sourceTree = "<group>"; };
 		2459CF8428F9CE4A00507DD7 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		35553260E867A0BE2568D4D2 /* Pods-Education.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Education.release.xcconfig"; path = "Target Support Files/Pods-Education/Pods-Education.release.xcconfig"; sourceTree = "<group>"; };
+		633883172917F08D001CEB65 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		633883192917F093001CEB65 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		6338831B2917F09B001CEB65 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		6338831D2917F0A2001CEB65 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		633883222917F46C001CEB65 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		633883242917F4B8001CEB65 /* ImagePreloaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreloaderView.swift; sourceTree = "<group>"; };
 		63D7208828E6D0910026D7E5 /* Education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Education.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D7209428E6D0930026D7E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63D7209728E6D0930026D7E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -153,6 +165,57 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		633883122917F033001CEB65 /* ApiProvider */ = {
+			isa = PBXGroup;
+			children = (
+				633883162917F057001CEB65 /* Entity */,
+				633883152917F052001CEB65 /* Provider */,
+				633883142917F04E001CEB65 /* Service */,
+				633883132917F048001CEB65 /* ApiClient */,
+			);
+			path = ApiProvider;
+			sourceTree = "<group>";
+		};
+		633883132917F048001CEB65 /* ApiClient */ = {
+			isa = PBXGroup;
+			children = (
+				633883172917F08D001CEB65 /* ApiClient.swift */,
+			);
+			path = ApiClient;
+			sourceTree = "<group>";
+		};
+		633883142917F04E001CEB65 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				633883192917F093001CEB65 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		633883152917F052001CEB65 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				6338831B2917F09B001CEB65 /* Provider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		633883162917F057001CEB65 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6338831D2917F0A2001CEB65 /* Response.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		633883212917F45E001CEB65 /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				633883222917F46C001CEB65 /* UIImageView+Ext.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		63D7207F28E6D0910026D7E5 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +237,7 @@
 		63D7208A28E6D0910026D7E5 /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				633883122917F033001CEB65 /* ApiProvider */,
 				63D720AE28E72EAC0026D7E5 /* UI */,
 				63D720AD28E72EA10026D7E5 /* StartpackProject */,
 				63D7209428E6D0930026D7E5 /* Assets.xcassets */,
@@ -305,6 +369,7 @@
 		63D720D328E733890026D7E5 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				633883212917F45E001CEB65 /* UIImageView */,
 				63D7211228E7383E0026D7E5 /* UIView */,
 				63D720DA28E734500026D7E5 /* UITableView */,
 				63D720D728E734330026D7E5 /* UICollectionView */,
@@ -443,6 +508,7 @@
 				63D7210328E736F30026D7E5 /* NavigationBar.swift */,
 				63D7210528E737060026D7E5 /* FloatingPanel.swift */,
 				63D7210728E7371F0026D7E5 /* NavigationBarTitle.swift */,
+				633883242917F4B8001CEB65 /* ImagePreloaderView.swift */,
 			);
 			path = HelperUI;
 			sourceTree = "<group>";
@@ -645,21 +711,25 @@
 				63D7211628E738BE0026D7E5 /* StartCoordinator.swift in Sources */,
 				63D7210B28E737650026D7E5 /* InputForm.swift in Sources */,
 				63D720C528E731940026D7E5 /* BaseColor.swift in Sources */,
+				6338831E2917F0A2001CEB65 /* Response.swift in Sources */,
 				63D720BC28E7300C0026D7E5 /* RouterProtocol.swift in Sources */,
 				63D720BA28E72FEF0026D7E5 /* Coordinator.swift in Sources */,
 				63D7212228E752770026D7E5 /* DetailView.swift in Sources */,
 				63D7210D28E737730026D7E5 /* InputForm + constraints.swift in Sources */,
 				63D720C728E731C80026D7E5 /* AppIcons.swift in Sources */,
+				633883182917F08D001CEB65 /* ApiClient.swift in Sources */,
 				24142E8428ED86E700873E82 /* MainCollectionViewCell.swift in Sources */,
 				63D720C328E7318C0026D7E5 /* SchemeColor.swift in Sources */,
 				63D7211428E7385B0026D7E5 /* UIViewHiding.swift in Sources */,
 				242508BC291432D000E1CD27 /* SwingerListViewController.swift in Sources */,
 				63D720FF28E735F60026D7E5 /* MainScreenView.swift in Sources */,
 				242508BF2914330100E1CD27 /* SwingerListView.swift in Sources */,
+				6338831C2917F09B001CEB65 /* Provider.swift in Sources */,
 				63D7211828E73D300026D7E5 /* UIView.swift in Sources */,
 				2459CF8328F9CE3000507DD7 /* DetailTabelView.swift in Sources */,
 				63D720EC28E735370026D7E5 /* SessionConfigurationProtocol.swift in Sources */,
 				63D720EE28E735490026D7E5 /* RequestBuilderImpl.swift in Sources */,
+				633883232917F46C001CEB65 /* UIImageView+Ext.swift in Sources */,
 				242508C12914366000E1CD27 /* SwingerTableViewCell.swift in Sources */,
 				63D720D628E733B00026D7E5 /* BaseViewController.swift in Sources */,
 				63D7210428E736F30026D7E5 /* NavigationBar.swift in Sources */,
@@ -670,6 +740,7 @@
 				63D7210828E7371F0026D7E5 /* NavigationBarTitle.swift in Sources */,
 				63D7210F28E737870026D7E5 /* InputForm + UITextFieldDelegate.swift in Sources */,
 				63D7210128E735FF0026D7E5 /* MainScreenViewController.swift in Sources */,
+				6338831A2917F093001CEB65 /* Service.swift in Sources */,
 				63D720FD28E735EE0026D7E5 /* LaunchScreenViewController.swift in Sources */,
 				63D7212628E7553D0026D7E5 /* MainModel.swift in Sources */,
 				63D7212428E752940026D7E5 /* DetailViewController.swift in Sources */,
@@ -677,6 +748,7 @@
 				63D720CD28E7327F0026D7E5 /* DI.swift in Sources */,
 				63D720FB28E735E20026D7E5 /* LaunchScreenView.swift in Sources */,
 				63D720EA28E7352B0026D7E5 /* ConfigurationProtocol.swift in Sources */,
+				633883252917F4B8001CEB65 /* ImagePreloaderView.swift in Sources */,
 				63D7211128E737AA0026D7E5 /* InputFormModel.swift in Sources */,
 				2459CF8528F9CE4A00507DD7 /* DetailTableViewController.swift in Sources */,
 				63D720D128E7334E0026D7E5 /* Types.swift in Sources */,

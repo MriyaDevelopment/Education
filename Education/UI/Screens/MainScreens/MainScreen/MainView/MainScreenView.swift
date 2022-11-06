@@ -19,7 +19,7 @@ final class MainView: UIView {
         return view
     }()
     
-    private var elements: [MainStruct] = []
+    private var elements: [Article] = []
 
     
  
@@ -116,7 +116,7 @@ final class MainView: UIView {
     
    
 
-    func configure(elements: [MainStruct]) {
+    func configure(elements: [Article]) {
         self.elements = elements
         print("Запуск \(elements.count)")
         mainCollectionView.reloadData()
