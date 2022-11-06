@@ -11,12 +11,16 @@ import Combine
 protocol ProviderProtocol {
     
     var events: PassthroughSubject<ProviderEvent, Never> { get }
+    var stateArticles: CurrentValueSubject<ArticlesState, Never> { get }
+
 
     func getArticles()
 }
 
 final class ProviderImpl: ProviderProtocol {
+    
     let events = PassthroughSubject<ProviderEvent, Never>()
+    let stateArticles = CurrentValueSubject<ArticlesState, Never>(ArticlesState.inital)
     
     private let service: ServiceProtocol
     private var articleRequest: AnyCancellable?
@@ -42,6 +46,8 @@ final class ProviderImpl: ProviderProtocol {
                     self.events.send(.errorMessage(result.error))
                 case "success":
                     self.events.send(.getArticlesSuccess(result))
+                    self.stateArticles.value = self.stateArticles.value
+                        .with(articlesResponse: result.articles)
                 default:
                     break
                 }
@@ -53,4 +59,18 @@ enum ProviderEvent {
     case error(_ error: ApiError)
     case errorMessage(_ errorMessage: String?)
     case getArticlesSuccess(_ response: ArticlesResponse)
+}
+
+struct ArticlesState {
+    var articlesResponse: [Article]?
+    
+    static let inital = ArticlesState(
+        articlesResponse: nil
+    )
+    
+    func with(articlesResponse: [Article]?) -> Self {
+        ArticlesState(
+            articlesResponse: articlesResponse
+        )
+    }
 }
