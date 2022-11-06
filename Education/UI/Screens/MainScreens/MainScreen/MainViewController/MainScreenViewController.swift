@@ -30,7 +30,7 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     private func subscribeForUpdates() {
         rootView.events.sink { [weak self] in self?.onViewEvents($0) }.store(in: &cancalables)
-        provider.events.sink { [weak self] in self?.onPrivderEvents($0) }.store(in: &cancalables)
+        provider.events.sink { [weak self] in self?.onProviderEvents($0) }.store(in: &cancalables)
     }
     
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
         }
     }
     
-    private func onPrivderEvents(_ event: ProviderEvent) {
+    private func onProviderEvents(_ event: ProviderEvent) {
         switch event {
         case .getArticlesSuccess(let response):
             guard let articles = response.articles else { return }

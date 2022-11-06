@@ -9,15 +9,9 @@ import UIKit
 
 final class DetailViewController<View: DetailView>: BaseViewController<View> {
     
-    private var model: MainModel
+    private var model: MainStruct
     
-    var guide: UILayoutGuide {
-            get {
-                rootView.guide
-            }
-        }
-    
-    init(model: MainModel) {
+    init(model: MainStruct) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }

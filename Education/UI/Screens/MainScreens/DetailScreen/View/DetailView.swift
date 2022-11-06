@@ -9,15 +9,10 @@ import UIKit
 
 final class DetailView: UIView {
      
-  
-
-    
     private var contentView: UIView = {
         let view = UIView()
         return view
     }()
-      
-  
     
     private let label: UILabel = {
         let label = UILabel()
