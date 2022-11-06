@@ -23,11 +23,8 @@ final class MainCoordinator: BaseCoordinator {
         showMainScreen()
    
     }
-    
-    
-    
     private func showMainScreen() {
-        let screen = screenFactory.makeMainScreen()
+        let screen = screenFactory.makeLoginScreen()
         screen.buttonClicked = { [weak self] model in
             self?.showDetailScreen(model: model)
         }
@@ -49,6 +46,8 @@ final class MainCoordinator: BaseCoordinator {
         let screen = screenFactory.makeSwingerScreen()
         router.push(screen, animated: true)
       
+        router.present(screen, animated: true, guide: screen.guide)
+
     }
      
     private func showDetailScreen2(model: MainStruct) {

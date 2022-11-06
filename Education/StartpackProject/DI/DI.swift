@@ -54,15 +54,12 @@ protocol ScreenFactoryProtocol {
     func makeSwingerScreen() -> SwingerListViewController<SwingerListView>
     
    // func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView>
+    func makeDetailScreen(model: MainModel) -> DetailViewController<DetailView>
+    func makeLoginScreen() -> LoginViewController<LoginScreenView>
 
 }
 
 final class ScreenFactory: ScreenFactoryProtocol {
-   
-//    func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView> {
-//        <#code#>
-//    }
-//
 
     fileprivate weak var di: Di!
     fileprivate init() {}
@@ -79,7 +76,9 @@ final class ScreenFactory: ScreenFactoryProtocol {
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView> {
         LaunchScreenViewController<LaunchScreenView>()
     }
-    
+    func makeLoginScreen() -> LoginViewController<LoginScreenView> {
+        LoginViewController<LoginScreenView>()
+    }
     func makeMainScreen() -> MainViewController<MainView> {
         MainViewController<MainView>()
     }
