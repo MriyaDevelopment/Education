@@ -35,12 +35,15 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 14
         layer.borderColor = UIColor.systemGray.cgColor
         layer.borderWidth = 2.0
         clipsToBounds = true
+        
         addElements()
         addTargets()
     }
@@ -62,7 +65,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
         backgroundImageView.addSubview(titleLabel)
         backgroundImageView.addSubview(button)
         makeConstraints()
-        
     
     }
     
@@ -93,7 +95,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
             make.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(5)
             make.right.bottom.equalToSuperview().offset(-10)
         }
-       
+        
     }
 }
 

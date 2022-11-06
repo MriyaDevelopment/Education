@@ -5,7 +5,6 @@ final class SwingerListView: UIView {
 
     let events = PassthroughSubject<MainScreenViewEvents, Never>()
 
-    
     private var contentView: UIView = {
         let view = UIView()
         return view
@@ -17,7 +16,6 @@ final class SwingerListView: UIView {
  
     private var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.systemOrange
         label.font = MainFont.bold(size: 20)
         label.text = "Восемь планет солнечной системы"
         label.textAlignment = .center
@@ -31,8 +29,11 @@ final class SwingerListView: UIView {
         tableView.backgroundColor = UIColor.clear
         tableView.dataSource = self
         tableView.delegate = self
+       
         tableView.register(SwingerTableViewCell.self)
         tableView.showsVerticalScrollIndicator = false
+        
+  
         tableView.alwaysBounceVertical = true
 
         return tableView
@@ -53,6 +54,7 @@ final class SwingerListView: UIView {
         addSubview(contentView)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(tableView)
+
         makeConstraints()
     }
 
@@ -72,6 +74,7 @@ final class SwingerListView: UIView {
         tableView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(subTitleLabel.snp.bottom).offset(5)
+        
             make.bottom.equalToSuperview()
             
         }
@@ -96,7 +99,6 @@ extension SwingerListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: SwingerTableViewCell.self, for: indexPath)
-        cell.contentView.isUserInteractionEnabled = false
         cell.configure(data: elements[indexPath.row])
 //        cell.clickAction = { [weak self] in
 //            if let model = self?.elements[indexPath.row] {
