@@ -8,14 +8,21 @@
 import UIKit
 
 final class DetailView: UIView {
-    
+
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.brown
         scrollView.isScrollEnabled = true
         return scrollView
     }()
-
+    
+    private var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+      
+  
+    
     private let label: UILabel = {
         let label = UILabel()
         label.font = MainFont.bold(size: 24)
@@ -38,6 +45,20 @@ final class DetailView: UIView {
     var guide: UILayoutGuide
     
     
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = MainFont.medium(size: 14)
+        label.textColor = .red
+        label.text = "khouhkojn"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         guide = scrollView.contentLayoutGuide
         super.init(frame: frame)
@@ -54,7 +75,13 @@ final class DetailView: UIView {
         labelOne.text = "Кунилингус"
     }
     
+    
+    
+    
     private func addElements() {
+        addSubview(label)
+        addSubview(imageView)
+        addSubview(descriptionLabel)
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(label)
@@ -84,6 +111,17 @@ final class DetailView: UIView {
             make.edges.equalToSuperview()
             //В примере этого не было, но без него скролл нихуя не работал
             make.width.equalToSuperview()
+        }
+      
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.left.right.equalToSuperview().inset(10)
+            make.height.equalTo(200)
+        }
+        descriptionLabel.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().offset(130)
+            make.top.equalTo(imageView.snp.bottom).offset(50)
+            
         }
     }
     

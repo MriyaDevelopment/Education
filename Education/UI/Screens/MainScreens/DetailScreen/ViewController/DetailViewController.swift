@@ -22,6 +22,7 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
         super.init(nibName: nil, bundle: nil)
     }
 
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,8 +30,13 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
     override func viewDidLoad() {
         super.viewDidLoad()
         rootView.configure(model: model)
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        let titleView = NavigationBarTitle(title: "Вход", subTitle: "")
+        navBar.addItem(titleView, toPosition: .title)
         navBar.showView()
         navBar.showBottomLine()
     }
-    
 }

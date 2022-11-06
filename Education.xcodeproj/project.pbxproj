@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		05D1E87506B50F9E80900E68 /* Pods_Education.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A283727850B7682952F8EAC5 /* Pods_Education.framework */; };
+		24142E7A28ECC1CD00873E82 /* MainScreenViewEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24142E7928ECC1CD00873E82 /* MainScreenViewEvents.swift */; };
+		24142E8428ED86E700873E82 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24142E8328ED86E700873E82 /* MainCollectionViewCell.swift */; };
+		242508BC291432D000E1CD27 /* SwingerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242508BB291432D000E1CD27 /* SwingerListViewController.swift */; };
+		242508BF2914330100E1CD27 /* SwingerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242508BE2914330100E1CD27 /* SwingerListView.swift */; };
+		242508C12914366000E1CD27 /* SwingerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242508C02914366000E1CD27 /* SwingerTableViewCell.swift */; };
+		2459CF8328F9CE3000507DD7 /* DetailTabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459CF8228F9CE3000507DD7 /* DetailTabelView.swift */; };
+		2459CF8528F9CE4A00507DD7 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2459CF8428F9CE4A00507DD7 /* DetailTableViewController.swift */; };
 		63D7209528E6D0930026D7E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D7209428E6D0930026D7E5 /* Assets.xcassets */; };
 		63D7209828E6D0930026D7E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D7209628E6D0930026D7E5 /* LaunchScreen.storyboard */; };
 		63D720B828E72FAB0026D7E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D720B728E72FAB0026D7E5 /* AppDelegate.swift */; };
@@ -46,7 +53,6 @@
 		63D7211428E7385B0026D7E5 /* UIViewHiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211328E7385B0026D7E5 /* UIViewHiding.swift */; };
 		63D7211628E738BE0026D7E5 /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211528E738BE0026D7E5 /* StartCoordinator.swift */; };
 		63D7211828E73D300026D7E5 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211728E73D300026D7E5 /* UIView.swift */; };
-		63D7211C28E74F420026D7E5 /* MainScreenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */; };
 		63D7212228E752770026D7E5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212128E752770026D7E5 /* DetailView.swift */; };
 		63D7212428E752940026D7E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212328E752940026D7E5 /* DetailViewController.swift */; };
 		63D7212628E7553D0026D7E5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7212528E7553D0026D7E5 /* MainModel.swift */; };
@@ -56,6 +62,13 @@
 
 /* Begin PBXFileReference section */
 		0140CB36852DA7E7341FDB99 /* Pods-Education.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Education.debug.xcconfig"; path = "Target Support Files/Pods-Education/Pods-Education.debug.xcconfig"; sourceTree = "<group>"; };
+		24142E7928ECC1CD00873E82 /* MainScreenViewEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewEvents.swift; sourceTree = "<group>"; };
+		24142E8328ED86E700873E82 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		242508BB291432D000E1CD27 /* SwingerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingerListViewController.swift; sourceTree = "<group>"; };
+		242508BE2914330100E1CD27 /* SwingerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingerListView.swift; sourceTree = "<group>"; };
+		242508C02914366000E1CD27 /* SwingerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingerTableViewCell.swift; sourceTree = "<group>"; };
+		2459CF8228F9CE3000507DD7 /* DetailTabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTabelView.swift; sourceTree = "<group>"; };
+		2459CF8428F9CE4A00507DD7 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		35553260E867A0BE2568D4D2 /* Pods-Education.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Education.release.xcconfig"; path = "Target Support Files/Pods-Education/Pods-Education.release.xcconfig"; sourceTree = "<group>"; };
 		63D7208828E6D0910026D7E5 /* Education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Education.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63D7209428E6D0930026D7E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,7 +110,6 @@
 		63D7211328E7385B0026D7E5 /* UIViewHiding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHiding.swift; sourceTree = "<group>"; };
 		63D7211528E738BE0026D7E5 /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
 		63D7211728E73D300026D7E5 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenDataModel.swift; sourceTree = "<group>"; };
 		63D7212128E752770026D7E5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63D7212328E752940026D7E5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		63D7212528E7553D0026D7E5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -124,6 +136,25 @@
 				A283727850B7682952F8EAC5 /* Pods_Education.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		242508BD291432DB00E1CD27 /* SwingerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				242508BB291432D000E1CD27 /* SwingerListViewController.swift */,
+				242508BE2914330100E1CD27 /* SwingerListView.swift */,
+				242508C02914366000E1CD27 /* SwingerTableViewCell.swift */,
+			);
+			path = SwingerScreen;
+			sourceTree = "<group>";
+		};
+		2459CF8128F9CDF200507DD7 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				2459CF8228F9CE3000507DD7 /* DetailTabelView.swift */,
+				2459CF8428F9CE4A00507DD7 /* DetailTableViewController.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		63D7207F28E6D0910026D7E5 = {
@@ -370,6 +401,7 @@
 		63D720F528E735BB0026D7E5 /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
+				242508BD291432DB00E1CD27 /* SwingerScreen */,
 				63D7211E28E7524F0026D7E5 /* DetailScreen */,
 				63D7211D28E752420026D7E5 /* MainScreen */,
 			);
@@ -404,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				63D720FE28E735F60026D7E5 /* MainScreenView.swift */,
+				24142E8328ED86E700873E82 /* MainCollectionViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -442,8 +475,8 @@
 		63D7211A28E74F2E0026D7E5 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				63D7211B28E74F420026D7E5 /* MainScreenDataModel.swift */,
 				63D7212528E7553D0026D7E5 /* MainModel.swift */,
+				24142E7928ECC1CD00873E82 /* MainScreenViewEvents.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -461,6 +494,7 @@
 		63D7211E28E7524F0026D7E5 /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2459CF8128F9CDF200507DD7 /* TableView */,
 				63D7212028E7525B0026D7E5 /* View */,
 				63D7211F28E752550026D7E5 /* ViewController */,
 			);
@@ -631,17 +665,22 @@
 				63D7212228E752770026D7E5 /* DetailView.swift in Sources */,
 				63D7210D28E737730026D7E5 /* InputForm + constraints.swift in Sources */,
 				63D720C728E731C80026D7E5 /* AppIcons.swift in Sources */,
+				24142E8428ED86E700873E82 /* MainCollectionViewCell.swift in Sources */,
 				63D720C328E7318C0026D7E5 /* SchemeColor.swift in Sources */,
 				63D7211428E7385B0026D7E5 /* UIViewHiding.swift in Sources */,
+				242508BC291432D000E1CD27 /* SwingerListViewController.swift in Sources */,
 				63D720FF28E735F60026D7E5 /* MainScreenView.swift in Sources */,
+				242508BF2914330100E1CD27 /* SwingerListView.swift in Sources */,
 				63D7211828E73D300026D7E5 /* UIView.swift in Sources */,
+				2459CF8328F9CE3000507DD7 /* DetailTabelView.swift in Sources */,
 				63D720EC28E735370026D7E5 /* SessionConfigurationProtocol.swift in Sources */,
 				63D720EE28E735490026D7E5 /* RequestBuilderImpl.swift in Sources */,
+				242508C12914366000E1CD27 /* SwingerTableViewCell.swift in Sources */,
 				63D720D628E733B00026D7E5 /* BaseViewController.swift in Sources */,
 				63D7210428E736F30026D7E5 /* NavigationBar.swift in Sources */,
 				63D720B828E72FAB0026D7E5 /* AppDelegate.swift in Sources */,
 				63D720C128E731650026D7E5 /* BaseFont.swift in Sources */,
-				63D7211C28E74F420026D7E5 /* MainScreenDataModel.swift in Sources */,
+				24142E7A28ECC1CD00873E82 /* MainScreenViewEvents.swift in Sources */,
 				63D720F228E735610026D7E5 /* ApiError.swift in Sources */,
 				63D7210828E7371F0026D7E5 /* NavigationBarTitle.swift in Sources */,
 				EBD3EBCC28ED944C00052022 /* LoginScreenView.swift in Sources */,
@@ -655,6 +694,7 @@
 				63D720FB28E735E20026D7E5 /* LaunchScreenView.swift in Sources */,
 				63D720EA28E7352B0026D7E5 /* ConfigurationProtocol.swift in Sources */,
 				63D7211128E737AA0026D7E5 /* InputFormModel.swift in Sources */,
+				2459CF8528F9CE4A00507DD7 /* DetailTableViewController.swift in Sources */,
 				63D720D128E7334E0026D7E5 /* Types.swift in Sources */,
 				63D720C928E7321E0026D7E5 /* ApplicationCoordinator.swift in Sources */,
 				63D720F028E735540026D7E5 /* APIClient.swift in Sources */,

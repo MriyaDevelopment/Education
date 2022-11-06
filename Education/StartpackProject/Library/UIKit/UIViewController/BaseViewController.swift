@@ -38,7 +38,7 @@ class BaseViewController<View: UIView>: UIViewController, UIGestureRecognizerDel
         
         if ( self != self.navigationController?.viewControllers[0] ) {
             let button = UIButton()
-            let image = AppIcons.getIcon(.i_back_button_detail)
+            let image = AppIcons.getIcon(.i_back_button_detail).withTintColor(.black)
             button.setImage(image, for: .normal)
             button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
             button.snp.makeConstraints { (make) in
