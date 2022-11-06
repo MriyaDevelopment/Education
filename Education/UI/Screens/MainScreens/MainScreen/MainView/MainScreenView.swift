@@ -113,8 +113,6 @@ final class MainView: UIView {
         }
 
     }
-    
-   
 
     func configure(elements: [Article]) {
         self.elements = elements
@@ -135,13 +133,13 @@ extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell.configure(item: elements[indexPath.row])
         cell.clickAction = { [weak self] in
             if let model = self?.elements[indexPath.row] {
-                self?.events.send(.buttonClicked(model))
+//                self?.events.send(.buttonClicked(model))
             }
         }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        events.send(.cellClicked(elements[indexPath.row]))
+//        events.send(.cellClicked(elements[indexPath.row]))
        }
 }
 

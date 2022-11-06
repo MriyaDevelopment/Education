@@ -37,7 +37,6 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
         super.viewDidLoad()
         provider.getArticles()
         subscribeForUpdates()
-        
     }
     
     private func onViewEvents(_ event: MainScreenViewEvents) {
