@@ -19,7 +19,7 @@ final class MainView: UIView {
         return view
     }()
     
-    private var elements: [MainStruct] = []
+    private var elements: [Article] = []
 
     
  
@@ -31,13 +31,7 @@ final class MainView: UIView {
         return label
     }()
     
-    private var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = MainFont.medium(size: 14)
-        label.textColor = BaseColor.hex_F1F1F1.uiColor()
-        label.text = ""
-        return label
-    }()
+  
    
     
     private lazy var gridLayout: UICollectionViewFlowLayout = {
@@ -89,6 +83,7 @@ final class MainView: UIView {
         addSubview(contentView)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(mainCollectionView)
+
         makeConstraints()
     }
 
@@ -108,15 +103,14 @@ final class MainView: UIView {
         mainCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(subTitleLabel.snp.bottom).offset(5)
+        
             make.bottom.equalToSuperview()
             
         }
 
     }
-    
-   
 
-    func configure(elements: [MainStruct]) {
+    func configure(elements: [Article]) {
         self.elements = elements
         print("Запуск \(elements.count)")
         mainCollectionView.reloadData()
@@ -135,13 +129,13 @@ extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell.configure(item: elements[indexPath.row])
         cell.clickAction = { [weak self] in
             if let model = self?.elements[indexPath.row] {
-                self?.events.send(.buttonClicked(model))
+//                self?.events.send(.buttonClicked(model))
             }
         }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        events.send(.cellClicked(elements[indexPath.row]))
+//        events.send(.cellClicked(elements[indexPath.row]))
        }
 }
 

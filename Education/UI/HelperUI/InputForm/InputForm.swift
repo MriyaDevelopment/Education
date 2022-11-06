@@ -43,8 +43,9 @@ class InputForm: UIView {
     
     lazy var topLabel: UILabel = {
         let label = UILabel()
-        label.textColor = BaseColor.hex_1B1919.uiColor()
-        label.font = MainFont.regular(size: 16)
+        label.textColor = .black
+        label.textAlignment = .center
+        
         label.text = topTitleText
         return label
     }()
@@ -67,6 +68,7 @@ class InputForm: UIView {
     let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -79,7 +81,7 @@ class InputForm: UIView {
     let inputStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = 1
         return stackView
     }()
     
@@ -90,21 +92,23 @@ class InputForm: UIView {
     
     var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = BaseColor.hex_1B1919.uiColor()
+        view.backgroundColor = UIColor.lightGray
         return view
     }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = BaseColor.hex_A5A7AD.uiColor()
-        label.font = MainFont.regular(size: 16)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16.0)
         label.text = placeholder
+        label.textAlignment = .center
         return label
     }()
     
     lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.font = MainFont.regular(size: 16)
+        textField.tintColor = UIColor(named: "millenium_blue")
+       // textField.font = MainFont.regular(size: 16)
         return textField
     }()
     
@@ -157,9 +161,10 @@ class InputForm: UIView {
             textField.keyboardType = .emailAddress
             textField.textContentType = .emailAddress
             textField.autocapitalizationType = .none
+            textField.textAlignment = .left
             textField.autocorrectionType = .no
-            leftImage.isHidden = false
-            leftImage.image = AppIcons.getIcon(.i_email_icon)
+//            leftImage.isHidden = false
+//            leftImage.image = AppIcons.getIcon(.i_email_icon)
             let firstpart = "[A-Z0-9a-z_%+-]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
             let serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
             let emailRegex = firstpart + "@" + serverpart + "[A-Za-z]{2,8}"
@@ -171,14 +176,15 @@ class InputForm: UIView {
         case .password:
             textField.isSecureTextEntry = true
             textField.autocapitalizationType = .none
-            leftImage.isHidden = false
-            rightImage.isHidden = false
-            leftImage.image = AppIcons.getIcon(.i_password_icon)
-            rightImage.image = AppIcons.getIcon(.i_eye_image)
+            textField.textAlignment = .center
+//            leftImage.isHidden = false
+//            rightImage.isHidden = false
+           // leftImage.image = AppIcons.getIcon(.i_password_icon)
+           // rightImage.image = AppIcons.getIcon(.i_eye_image)
         case .calendar:
-            leftImage.isHidden = false
-            rightImage.isHidden = false
-            rightImage.image = AppIcons.getIcon(.i_calendar_icon)
+           // leftImage.isHidden = false
+          //  rightImage.isHidden = false
+          //  rightImage.image = AppIcons.getIcon(.i_calendar_icon)
             titleLabel.snp.remakeConstraints { (make) in
                 make.left.equalToSuperview().offset(5)
                 make.right.equalToSuperview()
@@ -206,12 +212,12 @@ class InputForm: UIView {
             rightImage.isHidden = false
             rightImage.image = AppIcons.getIcon(.i_heart_input)
             titleLabel.snp.remakeConstraints { (make) in
-                make.left.equalToSuperview().offset(5)
+                make.left.equalToSuperview().offset(1)
                 make.right.equalToSuperview()
                 make.centerY.equalToSuperview()
             }
             textField.snp.remakeConstraints { (make) in
-                make.left.equalToSuperview().offset(5)
+                make.left.equalToSuperview().offset(1)
                 make.right.equalToSuperview()
                 make.centerY.equalToSuperview()
             }

@@ -12,10 +12,29 @@ final class Di {
     fileprivate let screenFactory: ScreenFactory
     fileprivate let coordinatorFactory: CoordinatorFactoryProtocol
     
+    fileprivate let configuration: ConfigurationProtocol
+    fileprivate let sessionConfiguration: SessionConfigurationProtocol
+    
+    fileprivate let requestBuilder: RequestBuilderProtocol
+    fileprivate let apiClient: ApiClient
+    
+    fileprivate let service: ServiceProtocol
+    fileprivate let provider: ProviderProtocol
+    
     init() {
         
         screenFactory = ScreenFactory()
         coordinatorFactory = CoordinatorFactory(screenFactory: screenFactory)
+        
+        configuration = Configuration()
+        sessionConfiguration = SessionConfiguration()
+        
+        requestBuilder = RequestBuilder(configuration: configuration)
+        
+        apiClient = ApiClient(requestBuilder: requestBuilder, configuration: sessionConfiguration.configuration)
+        
+        service = Service(apiClient: apiClient)
+        provider = ProviderImpl(service: service)
         
         screenFactory.di = self
     }
@@ -53,16 +72,9 @@ protocol ScreenFactoryProtocol {
     
     func makeSwingerScreen() -> SwingerListViewController<SwingerListView>
     
-   // func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView>
-
 }
 
 final class ScreenFactory: ScreenFactoryProtocol {
-   
-//    func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView> {
-//        <#code#>
-//    }
-//
 
     fileprivate weak var di: Di!
     fileprivate init() {}
@@ -79,19 +91,16 @@ final class ScreenFactory: ScreenFactoryProtocol {
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView> {
         LaunchScreenViewController<LaunchScreenView>()
     }
-    
+    func makeLoginScreen() -> LoginViewController<LoginScreenView> {
+        LoginViewController<LoginScreenView>()
+    }
     func makeMainScreen() -> MainViewController<MainView> {
-        MainViewController<MainView>()
+        MainViewController<MainView>(provider: di.provider)
     }
     
     func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView> {
         DetailViewController<DetailView>(model: model)
     }
-  
-    
-//    func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView> {
-//        DetailTableViewController<DetailTableView>(model: model)
-//    }
     
 }
 

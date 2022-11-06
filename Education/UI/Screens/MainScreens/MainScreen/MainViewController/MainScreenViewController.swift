@@ -11,14 +11,16 @@ import Combine
 final class MainViewController<View: MainView>: BaseViewController<View> {
     
     var buttonClicked: ModelClosure?
-//    var button: ModelClosure?
     var cellClicked: ModelClosure?
+    
+    private var provider: ProviderProtocol
    
     private var cancalables = Set<AnyCancellable>()
     private var elements: [MainStruct] = []
     
     
-    init() {
+    init(provider: ProviderProtocol) {
+        self.provider = provider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,17 +30,14 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     private func subscribeForUpdates() {
         rootView.events.sink { [weak self] in self?.onViewEvents($0) }.store(in: &cancalables)
+        provider.events.sink { [weak self] in self?.onProviderEvents($0) }.store(in: &cancalables)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        elements = MainStruct.placeholderItems
-        rootView.configure(elements: elements)
+        provider.getArticles()
         subscribeForUpdates()
-        
     }
-    
-    
     
     private func onViewEvents(_ event: MainScreenViewEvents) {
         switch event {
@@ -50,8 +49,17 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
         }
     }
     
-
-    
+    private func onProviderEvents(_ event: ProviderEvent) {
+        switch event {
+        case .getArticlesSuccess(let response):
+            guard let articles = response.articles else { return }
+            rootView.configure(elements: articles)
+        case .errorMessage(let error):
+            break
+        default:
+            break
+        }
+    }
 }
 
 

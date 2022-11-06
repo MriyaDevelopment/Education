@@ -7,6 +7,7 @@ target 'Education' do
   pod 'FloatingPanel'
   pod 'InputMask'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Kingfisher', '~> 7.0'
   # Pods for Education
 
 end
