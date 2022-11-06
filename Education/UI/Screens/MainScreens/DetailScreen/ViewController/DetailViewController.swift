@@ -9,10 +9,15 @@ import UIKit
 
 final class DetailViewController<View: DetailView>: BaseViewController<View> {
     
-    private var model: MainStruct
+    private var model: MainModel
     
-  
-    init(model: MainStruct) {
+    var guide: UILayoutGuide {
+            get {
+                rootView.guide
+            }
+        }
+    
+    init(model: MainModel) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,6 +36,7 @@ final class DetailViewController<View: DetailView>: BaseViewController<View> {
     private func configureNavigationBar() {
         let titleView = NavigationBarTitle(title: "Вход", subTitle: "")
         navBar.addItem(titleView, toPosition: .title)
+        navBar.showView()
+        navBar.showBottomLine()
     }
-    
 }

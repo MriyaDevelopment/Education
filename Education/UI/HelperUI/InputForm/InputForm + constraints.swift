@@ -9,11 +9,11 @@ import UIKit
 
 extension InputForm {
     func addElements() {
-        addSubview(topLabel)
+        
         addSubview(mainStackView)
         mainStackView.addArrangedSubview(backView)
         mainStackView.addArrangedSubview(separatorView)
-        mainStackView.addArrangedSubview(bottomErrorLabel)
+        //mainStackView.addArrangedSubview(bottomErrorLabel)
         backView.addSubview(inputStackView)
                 
         containerView.addSubview(textField)
@@ -28,13 +28,15 @@ extension InputForm {
     
     private func makeConstraints() {
         
-        topLabel.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-        }
+//        topLabel.snp.makeConstraints { (make) in
+//            make.top.leading.trailing.equalToSuperview()
+//        }
         
         mainStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom)
-            make.bottom.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
         }
         
         backView.snp.makeConstraints { (make) in
@@ -47,8 +49,8 @@ extension InputForm {
         }
         
         textField.snp.makeConstraints { (make) in
-            make.left.equalTo(leftImage.snp.right).offset(10)
-            make.right.equalTo(rightImage.snp.left).offset(-5)
+            make.left.equalTo(leftImage.snp.right).offset(1)
+            make.right.equalTo(rightImage.snp.left).offset(1)
             make.centerY.equalToSuperview()
         }
         

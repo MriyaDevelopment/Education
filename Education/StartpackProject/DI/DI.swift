@@ -91,7 +91,9 @@ final class ScreenFactory: ScreenFactoryProtocol {
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView> {
         LaunchScreenViewController<LaunchScreenView>()
     }
-    
+    func makeLoginScreen() -> LoginViewController<LoginScreenView> {
+        LoginViewController<LoginScreenView>()
+    }
     func makeMainScreen() -> MainViewController<MainView> {
         MainViewController<MainView>(provider: di.provider)
     }
