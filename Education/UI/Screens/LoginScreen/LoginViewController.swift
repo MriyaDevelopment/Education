@@ -34,6 +34,8 @@ final class LoginViewController<View: LoginScreenView>: BaseViewController<View>
         switch event {
         case .buttonClicked(let model):
             buttonClicked?(model)
+        case .cellClicked(_):
+            break
         }
     }
     

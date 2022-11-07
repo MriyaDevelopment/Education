@@ -24,13 +24,9 @@ final class MainCoordinator: BaseCoordinator {
    
     }
     private func showMainScreen() {
-        let screen = screenFactory.makeLoginScreen()
+        let screen = screenFactory.makeMainScreen()
         screen.buttonClicked = { [weak self] model in
             self?.showDetailScreen(model: model)
-        }
-    
-        screen.cellClicked = { [weak self] model in
-            self?.showSwingerList()
         }
         router.setRootModule(screen, hideBar: true)
     }
@@ -46,7 +42,7 @@ final class MainCoordinator: BaseCoordinator {
         let screen = screenFactory.makeSwingerScreen()
         router.push(screen, animated: true)
       
-        router.present(screen, animated: true, guide: screen.guide)
+        router.push(screen, animated: true)
 
     }
      

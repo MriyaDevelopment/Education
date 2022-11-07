@@ -12,13 +12,13 @@ final class SwingerTableViewCell: UITableViewCell {
     
     var likeEnableClicked: VoidClosure?
     var likeDisableClicked: VoidClosure?
-    var clickAction: VoidClosure?
+    private var isLiked = false
     
+    ///12345
     
     private let backView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
-        view.isUserInteractionEnabled = true
         view.layer.shadowRadius = 10
         view.layer.shadowOpacity = 0.1
         view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
@@ -28,21 +28,35 @@ final class SwingerTableViewCell: UITableViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = MainFont.regular(size: 10)
+        label.font = MainFont.regular(size: 16)
         label.textColor = BaseColor.hex_F1F1F1.uiColor()
+        label.text = "Лигатурная игла Купера"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
     
-    private var ImageView: UIImageView = {
+    private var instrumentImageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 45
         image.layer.borderWidth = 2.0
         image.backgroundColor = .clear
         image.layer.borderColor = UIColor.white.cgColor
+       // image.image = AppIcons.getIcon(.i_default_image)
         image.clipsToBounds = true
         return image
+    }()
+    
+    private var likeButton: UIButton = {
+        let button = UIButton()
+        //button.setImage(AppIcons.getIcon(.i_like_disable), for: .normal)
+        button.isUserInteractionEnabled = true
+        button.backgroundColor = .white
+        button.layer.shadowRadius = 10
+        button.layer.shadowOpacity = 0.1
+        button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        button.layer.cornerRadius = 16
+        return button
     }()
     
     private var lineView: UIView = {
@@ -51,25 +65,13 @@ final class SwingerTableViewCell: UITableViewCell {
         return view
     }()
     
-//    private var descriptionLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = MainFont.medium(size: 14)
-//        label.textColor = BaseColor.hex_F1F1F1.uiColor()
-//        label.text = "Интерстеллар лучший фильм про космос"
-//        label.numberOfLines = 3
-//        return label
-//    }()
-    
-    private var tableButton: UIButton = {
-        let button = UIButton()
-        button.layer.borderColor = UIColor.systemGray.cgColor
-        button.layer.borderWidth = 2.0
-        button.isUserInteractionEnabled = true
-        button.layer.cornerRadius = 15.0
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemGray
-        return button
-        
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = MainFont.medium(size: 14)
+        label.textColor = BaseColor.hex_F1F1F1.uiColor()
+        label.text = "Хирургический инструмент для проведения шовного материала под кровеносные сосуды. Очень длинный текст очень длинный текст  очень длинный текст  очень длинный текст тттт"
+        label.numberOfLines = 3
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -77,6 +79,7 @@ final class SwingerTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         addElements()
+        addTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -88,35 +91,31 @@ final class SwingerTableViewCell: UITableViewCell {
     }
     
     func configure(data: MainStruct){
-        titleLabel.text = data.subtitleText
-        ImageView.image = data.backgroundImage
-        tableButton.setTitle(data.descriptionText, for: .normal)
+        titleLabel.text = data.subtitleText.firstCapitalized
+        instrumentImageView.image = data.backgroundImage
+//        descriptionLabel.text = data.full_text
+//        isLiked = data.is_liked ?? false
         
+        
+        
+        if isLiked == true {
+           // likeButton.setImage(AppIcons.getIcon(.i_like_enable), for: .normal)
+        } else {
+           // likeButton.setImage(AppIcons.getIcon(.i_like_disable), for: .normal)
+        }
     }
    
     private func addElements() {
         
         addSubview(backView)
         backView.addSubview(titleLabel)
-        backView.addSubview(ImageView)
+        backView.addSubview(instrumentImageView)
+        backView.addSubview(likeButton)
         backView.addSubview(lineView)
-        backView.addSubview(tableButton)
+        backView.addSubview(descriptionLabel)
+        
         makeConstraints()
-        addTargets()
     }
-    
-    
-    private func addTargets () {
-        tableButton.addTarget(self, action: #selector(clickedAction), for: .touchUpInside)
-      
-    }
-    
-    @objc private func clickedAction() {
-        clickAction?()
-        print("Нажатие кнопки")
-    }
-    
-   
     
     private func makeConstraints() {
         
@@ -132,7 +131,7 @@ final class SwingerTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(10)
         }
         
-        ImageView.snp.makeConstraints{ (make) in
+        instrumentImageView.snp.makeConstraints{ (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
           
@@ -140,20 +139,41 @@ final class SwingerTableViewCell: UITableViewCell {
         }
         
         lineView.snp.makeConstraints{ (make) in
-            make.left.equalTo(ImageView.snp.right).offset(10)
-            make.top.equalTo(ImageView.snp.top).offset(15)
-            make.bottom.equalTo(ImageView.snp.bottom).inset(15)
+            make.left.equalTo(instrumentImageView.snp.right).offset(10)
+        
+            make.top.equalTo(instrumentImageView.snp.top).offset(15)
+            make.bottom.equalTo(instrumentImageView.snp.bottom).inset(15)
             make.width.equalTo(2)
         }
         
-        tableButton.snp.makeConstraints{ (make) in
-            make.left.equalTo(lineView).offset(15)
-            make.right.equalToSuperview().inset(30)
+        descriptionLabel.snp.makeConstraints{ (make) in
+            make.left.equalTo(lineView).offset(10)
+            make.right.equalToSuperview().inset(40)
             make.top.equalTo(lineView.snp.top)
             make.bottom.equalTo(lineView.snp.bottom)
         }
         
-      }
-    
     }
+    
+    func addTarget() {
+        likeButton.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
+    }
+    
+    @objc private func likeAction() {
+        if isLiked == true {
+           // likeButton.setImage(AppIcons.getIcon(.i_like_disable), for: .normal)
+            isLiked = false
+            likeDisableClicked?()
+        } else {
+          //  likeButton.setImage(AppIcons.getIcon(.i_like_enable), for: .normal)
+            isLiked = true
+            likeEnableClicked?()
+        }
+       
+    }
+}
 
+extension StringProtocol {
+    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { prefix(1).capitalized + dropFirst() }
+}

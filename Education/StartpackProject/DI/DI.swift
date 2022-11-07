@@ -12,10 +12,29 @@ final class Di {
     fileprivate let screenFactory: ScreenFactory
     fileprivate let coordinatorFactory: CoordinatorFactoryProtocol
     
+    fileprivate let configuration: ConfigurationProtocol
+    fileprivate let sessionConfiguration: SessionConfigurationProtocol
+    
+    fileprivate let requestBuilder: RequestBuilderProtocol
+    fileprivate let apiClient: ApiClient
+    
+    fileprivate let service: ServiceProtocol
+    fileprivate let provider: ProviderProtocol
+    
     init() {
         
         screenFactory = ScreenFactory()
         coordinatorFactory = CoordinatorFactory(screenFactory: screenFactory)
+        
+        configuration = Configuration()
+        sessionConfiguration = SessionConfiguration()
+        
+        requestBuilder = RequestBuilder(configuration: configuration)
+        
+        apiClient = ApiClient(requestBuilder: requestBuilder, configuration: sessionConfiguration.configuration)
+        
+        service = Service(apiClient: apiClient)
+        provider = ProviderImpl(service: service)
         
         screenFactory.di = self
     }
@@ -53,10 +72,6 @@ protocol ScreenFactoryProtocol {
     
     func makeSwingerScreen() -> SwingerListViewController<SwingerListView>
     
-   // func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView>
-    func makeDetailScreen(model: MainModel) -> DetailViewController<DetailView>
-    func makeLoginScreen() -> LoginViewController<LoginScreenView>
-
 }
 
 final class ScreenFactory: ScreenFactoryProtocol {
@@ -80,17 +95,12 @@ final class ScreenFactory: ScreenFactoryProtocol {
         LoginViewController<LoginScreenView>()
     }
     func makeMainScreen() -> MainViewController<MainView> {
-        MainViewController<MainView>()
+        MainViewController<MainView>(provider: di.provider)
     }
     
     func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView> {
         DetailViewController<DetailView>(model: model)
     }
-  
-    
-//    func makeDetailTableScreen(model: MainStruct) -> DetailTableViewController<DetailTableView> {
-//        DetailTableViewController<DetailTableView>(model: model)
-//    }
     
 }
 

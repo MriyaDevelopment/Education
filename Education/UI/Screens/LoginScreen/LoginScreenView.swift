@@ -110,7 +110,7 @@ final class LoginScreenView: UIView {
     }
     
     @objc private func clickedAction() {
-        let model = MainModel(id: 0, title: "Jopa", subtitle: "Hui")
+        let model = MainStruct(id: 0, backgroundImage: UIImage(), type: "123", titleText: "123", subtitleText: "13")
         events.send(.buttonClicked(model))
     }
     
