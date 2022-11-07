@@ -51,8 +51,8 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     private func onProviderEvents(_ event: ProviderEvent) {
         switch event {
-        case .getArticlesSuccess(let response):
-            guard let articles = response.articles else { return }
+        case .getArticlesSuccess(_):
+            guard let articles = provider.stateArticles.value.articlesResponse else { return }
             rootView.configure(elements: articles)
         case .errorMessage(let error):
             break

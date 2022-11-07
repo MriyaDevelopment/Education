@@ -45,9 +45,9 @@ final class ProviderImpl: ProviderProtocol {
                 case "error":
                     self.events.send(.errorMessage(result.error))
                 case "success":
-                    self.events.send(.getArticlesSuccess(result))
                     self.stateArticles.value = self.stateArticles.value
                         .with(articlesResponse: result.articles)
+                    self.events.send(.getArticlesSuccess(result))
                 default:
                     break
                 }

@@ -112,7 +112,7 @@ final class MainView: UIView {
 
     func configure(elements: [Article]) {
         self.elements = elements
-        print("Запуск \(elements.count)")
+        print("Запуск \(self.elements.count)")
         mainCollectionView.reloadData()
     }
     
