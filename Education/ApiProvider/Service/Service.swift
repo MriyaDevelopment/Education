@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ServiceProtocol {
-    func getArticles() -> AnyPublisher<ArticlesResponse, ApiError>
+    func getArticles() -> AnyPublisher<LocationResponse, ApiError>
 }
 
 class Service: ServiceProtocol {
@@ -21,7 +21,7 @@ class Service: ServiceProtocol {
         self.apiClient = apiClient
     }
     
-    func getArticles() -> AnyPublisher<ArticlesResponse, ApiError> {
+    func getArticles() -> AnyPublisher<LocationResponse, ApiError> {
         articleRequest?.cancel()
         
         return apiClient.getArticles()

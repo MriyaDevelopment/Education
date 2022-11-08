@@ -9,21 +9,22 @@ import Foundation
 import Combine
 
 protocol ApiClientProtocol {
-    func getArticles() -> AnyPublisher<ArticlesResponse, Error>
+    func getArticles() -> AnyPublisher<LocationResponse, Error>
 }
 
 private func getPath(for method: String) -> String {
-    return "/public/api/\(method)"
+    return "/api/\(method)"
 }
 
 extension ApiClient: ApiClientProtocol {
     
 //MARK: GET methods
     
-    func getArticles() -> AnyPublisher<ArticlesResponse, Error> {
+    func getArticles() -> AnyPublisher<LocationResponse, Error> {
         let request = requestBuilder.requestBuild(
-            path: getPath(for: "getArticles"),
+            path: getPath(for: "location"),
             urlParametrs: [:])
+        print("Запуск \(getPath(for: "location"))")
         return performRequest(request)
     }
 }

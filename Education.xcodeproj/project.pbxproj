@@ -466,6 +466,7 @@
 		63D720F528E735BB0026D7E5 /* MainScreens */ = {
 			isa = PBXGroup;
 			children = (
+				EBD18B7B291ACCBD0084853D /* LocationScreen */,
 				242508BD291432DB00E1CD27 /* SwingerScreen */,
 				63D7211E28E7524F0026D7E5 /* DetailScreen */,
 				63D7211D28E752420026D7E5 /* MainScreen */,
@@ -590,6 +591,37 @@
 				35553260E867A0BE2568D4D2 /* Pods-Education.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EBD18B7B291ACCBD0084853D /* LocationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBD18B7E291ACD160084853D /* DataModel */,
+				EBD18B7D291ACD050084853D /* LocationView */,
+				EBD18B7C291ACCF30084853D /* LocationViewController */,
+			);
+			path = LocationScreen;
+			sourceTree = "<group>";
+		};
+		EBD18B7C291ACCF30084853D /* LocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationViewController;
+			sourceTree = "<group>";
+		};
+		EBD18B7D291ACD050084853D /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocationView;
+			sourceTree = "<group>";
+		};
+		EBD18B7E291ACD160084853D /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		EBD3EBC828ED93EE00052022 /* LoginScreen */ = {

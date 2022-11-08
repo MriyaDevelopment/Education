@@ -41,16 +41,9 @@ final class ProviderImpl: ProviderProtocol {
             }, receiveValue: { [weak self] result in
                 guard let self = self else { return }
                 
-                switch result.result {
-                case "error":
-                    self.events.send(.errorMessage(result.error))
-                case "success":
-                    self.stateArticles.value = self.stateArticles.value
-                        .with(articlesResponse: result.articles)
-                    self.events.send(.getArticlesSuccess(result))
-                default:
-                    break
-                }
+                self.stateArticles.value = self.stateArticles.value
+                    .with(articlesResponse: result.results)
+                self.events.send(.getArticlesSuccess(result))
             })
     }
 }
@@ -58,17 +51,17 @@ final class ProviderImpl: ProviderProtocol {
 enum ProviderEvent {
     case error(_ error: ApiError)
     case errorMessage(_ errorMessage: String?)
-    case getArticlesSuccess(_ response: ArticlesResponse)
+    case getArticlesSuccess(_ response: LocationResponse)
 }
 
 struct ArticlesState {
-    var articlesResponse: [Article]?
+    var articlesResponse: [Location]?
     
     static let inital = ArticlesState(
         articlesResponse: nil
     )
     
-    func with(articlesResponse: [Article]?) -> Self {
+    func with(articlesResponse: [Location]?) -> Self {
         ArticlesState(
             articlesResponse: articlesResponse
         )

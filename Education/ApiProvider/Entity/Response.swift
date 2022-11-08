@@ -7,6 +7,28 @@
 
 import Foundation
 
+// MARK: - LocationModel
+struct LocationResponse: Codable {
+    let info: Info
+    let results: [Location]
+}
+
+// MARK: - Info
+struct Info: Codable {
+    let count, pages: Int
+    let next: String
+}
+
+// MARK: - Result
+struct Location: Codable {
+    let id: Int
+    let name, type, dimension: String
+    let residents: [String]
+    let url: String
+    let created: String
+}
+
+
 struct ArticlesResponse: Codable {
     let error: String?
     let result: String?

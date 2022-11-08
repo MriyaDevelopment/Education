@@ -33,6 +33,6 @@ struct Configuration: ConfigurationProtocol {
 }
 
 struct ConfigurationTest: ConfigurationProtocol {
-    let scheme: String = "http"
-    let host = "ovz4.j04713753.pv29m.vps.myjino.ru"
+    let scheme: String = "https"
+    let host = "rickandmortyapi.com"
 }
