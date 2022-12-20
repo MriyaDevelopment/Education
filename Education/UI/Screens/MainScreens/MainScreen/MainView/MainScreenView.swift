@@ -19,7 +19,7 @@ final class MainView: UIView {
         return view
     }()
     
-    private var elements: [Location] = []
+   // private var elements: [Location] = []
 
     
  
@@ -52,21 +52,7 @@ final class MainView: UIView {
         return layout
     }()
     
-    lazy private var mainCollectionView: UICollectionView = {
-        let layout = gridLayout
-        layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.dataSource = self
-        collectionView.delegate = self
-       
-        collectionView.register(MainCollectionViewCell.self)
-        collectionView.showsVerticalScrollIndicator = false
-  
-        collectionView.alwaysBounceVertical = true
-
-        return collectionView
-    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,7 +68,6 @@ final class MainView: UIView {
 
         addSubview(contentView)
         contentView.addSubview(subTitleLabel)
-        contentView.addSubview(mainCollectionView)
 
         makeConstraints()
     }
@@ -99,43 +84,12 @@ final class MainView: UIView {
             make.right.equalToSuperview().inset(16)
             make.left.top.equalToSuperview().inset(15)
         }
-        
-        mainCollectionView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(5)
-        
-            make.bottom.equalToSuperview()
-            
-        }
 
     }
 
     func configure(elements: [Location]) {
-        self.elements = elements
-        print("Запуск \(self.elements.count)")
-        mainCollectionView.reloadData()
+       
     }
     
-}
-
-extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return elements.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCollectionReusableCell(withType: MainCollectionViewCell.self, for: indexPath)
-        cell.configure(item: elements[indexPath.row])
-        cell.clickAction = { [weak self] in
-            if let model = self?.elements[indexPath.row] {
-//                self?.events.send(.buttonClicked(model))
-            }
-        }
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        events.send(.cellClicked(elements[indexPath.row]))
-       }
 }
 

@@ -10,17 +10,8 @@ import Combine
 
 final class MainViewController<View: MainView>: BaseViewController<View> {
     
-    var buttonClicked: ModelClosure?
-    var cellClicked: ModelClosure?
     
-    private var provider: ProviderProtocol
-   
-    private var cancalables = Set<AnyCancellable>()
-    private var elements: [MainStruct] = []
-    
-    
-    init(provider: ProviderProtocol) {
-        self.provider = provider
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,38 +19,12 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func subscribeForUpdates() {
-        rootView.events.sink { [weak self] in self?.onViewEvents($0) }.store(in: &cancalables)
-        provider.events.sink { [weak self] in self?.onProviderEvents($0) }.store(in: &cancalables)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        provider.getArticles()
-        subscribeForUpdates()
+       
     }
     
-    private func onViewEvents(_ event: MainScreenViewEvents) {
-        switch event {
-        case .buttonClicked(let model):
-            buttonClicked?(model)
-        case .cellClicked(let model):
-            cellClicked?(model)
-            
-        }
-    }
-    
-    private func onProviderEvents(_ event: ProviderEvent) {
-        switch event {
-        case .getArticlesSuccess(_):
-            guard let articles = provider.stateArticles.value.articlesResponse else { return }
-            rootView.configure(elements: articles)
-        case .errorMessage(let error):
-            break
-        default:
-            break
-        }
-    }
 }
 
 

@@ -11,28 +11,30 @@ import Combine
 protocol ProviderProtocol {
     
     var events: PassthroughSubject<ProviderEvent, Never> { get }
-    var stateArticles: CurrentValueSubject<ArticlesState, Never> { get }
+    var stateLocations: CurrentValueSubject<LocationsState, Never> { get }
 
 
-    func getArticles()
+    func getLocations()
 }
 
 final class ProviderImpl: ProviderProtocol {
     
     let events = PassthroughSubject<ProviderEvent, Never>()
-    let stateArticles = CurrentValueSubject<ArticlesState, Never>(ArticlesState.inital)
+    let stateLocations = CurrentValueSubject<LocationsState, Never>(LocationsState.inital)
     
     private let service: ServiceProtocol
-    private var articleRequest: AnyCancellable?
+    private var locationRequest: AnyCancellable?
+    private var episodesRequest: AnyCancellable?
+    private var heroesRequest: AnyCancellable?
         
     init(service: ServiceProtocol) {
         self.service = service
     }
     
-    func getArticles() {
-        articleRequest?.cancel()
+    func getLocations() {
+        locationRequest?.cancel()
         
-        articleRequest = service.getArticles()
+        locationRequest = service.getLocations()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] result in
                 guard let self = self, case .failure(let error) = result else { return }
@@ -41,9 +43,9 @@ final class ProviderImpl: ProviderProtocol {
             }, receiveValue: { [weak self] result in
                 guard let self = self else { return }
                 
-                self.stateArticles.value = self.stateArticles.value
-                    .with(articlesResponse: result.results)
-                self.events.send(.getArticlesSuccess(result))
+                self.stateLocations.value = self.stateLocations.value
+                    .with(locationResponse: result.results)
+                self.events.send(.getLocationSuccess(result))
             })
     }
 }
@@ -51,19 +53,21 @@ final class ProviderImpl: ProviderProtocol {
 enum ProviderEvent {
     case error(_ error: ApiError)
     case errorMessage(_ errorMessage: String?)
-    case getArticlesSuccess(_ response: LocationResponse)
+    case getLocationSuccess(_ response: LocationResponse)
+    //case getHeroesSuccess()
+    //case getEpisodesSuccess()
 }
 
-struct ArticlesState {
-    var articlesResponse: [Location]?
+struct LocationsState {
+    var locationResponse: [Location]?
     
-    static let inital = ArticlesState(
-        articlesResponse: nil
+    static let inital = LocationsState(
+        locationResponse: nil
     )
     
-    func with(articlesResponse: [Location]?) -> Self {
-        ArticlesState(
-            articlesResponse: articlesResponse
+    func with(locationResponse: [Location]?) -> Self {
+        LocationsState(
+            locationResponse: locationResponse
         )
     }
 }

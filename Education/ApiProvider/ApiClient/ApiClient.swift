@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ApiClientProtocol {
-    func getArticles() -> AnyPublisher<LocationResponse, Error>
+    func getLocations() -> AnyPublisher<LocationResponse, Error>
 }
 
 private func getPath(for method: String) -> String {
@@ -20,7 +20,7 @@ extension ApiClient: ApiClientProtocol {
     
 //MARK: GET methods
     
-    func getArticles() -> AnyPublisher<LocationResponse, Error> {
+    func getLocations() -> AnyPublisher<LocationResponse, Error> {
         let request = requestBuilder.requestBuild(
             path: getPath(for: "location"),
             urlParametrs: [:])

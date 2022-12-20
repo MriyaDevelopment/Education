@@ -9,22 +9,22 @@ import Foundation
 import Combine
 
 protocol ServiceProtocol {
-    func getArticles() -> AnyPublisher<LocationResponse, ApiError>
+    func getLocations() -> AnyPublisher<LocationResponse, ApiError>
 }
 
 class Service: ServiceProtocol {
     
     private let apiClient: ApiClientProtocol
-    private var articleRequest: AnyCancellable?
+    private var locationRequest: AnyCancellable?
     
     init(apiClient: ApiClientProtocol) {
         self.apiClient = apiClient
     }
     
-    func getArticles() -> AnyPublisher<LocationResponse, ApiError> {
-        articleRequest?.cancel()
+    func getLocations() -> AnyPublisher<LocationResponse, ApiError> {
+        locationRequest?.cancel()
         
-        return apiClient.getArticles()
+        return apiClient.getLocations()
             .mapError { error in
                 if let error = error as? ApiError {
                     return error

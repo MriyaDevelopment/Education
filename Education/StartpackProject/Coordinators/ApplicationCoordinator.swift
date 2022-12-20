@@ -22,6 +22,12 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
     
     private func runStartFlow() {
+//        let coordinator = coordinatorFactory.makeTabCoordinator(router: router)
+//        coordinator.finishFlow = { [weak self, weak coordinator] in
+//            guard let self = self else { return }
+//            self.start()
+//            self.removeDependency(coordinator)
+//        }
         let coordinator = coordinatorFactory.makeStartCoordinator(router: router)
         coordinator.finishFlow = { [weak self, weak coordinator]  in
             guard let self = self else { return }

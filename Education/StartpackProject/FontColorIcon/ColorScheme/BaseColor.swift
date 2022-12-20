@@ -8,8 +8,9 @@
 import UIKit
 
 enum BaseColor {
-
+    static let hex_06C149 = SchemeColor(dark: Dark.hex_06C149, light: Light.hex_06C149)
     static let hex_E73626 = SchemeColor(dark: Dark.hex_E73626, light: Light.hex_E73626)
+    static let hex_000000 = SchemeColor(dark: Dark.hex_000000, light: Light.hex_000000)
     static let hex_ADAEB2 = SchemeColor(dark: Dark.hex_ADAEB2, light: Light.hex_ADAEB2)
     static let hex_FFFFFF = SchemeColor(dark: Dark.hex_FFFFFF, light: Light.hex_FFFFFF)
     static let hex_F1F1F1 = SchemeColor(dark: Dark.hex_F1F1F1, light: Light.hex_F1F1F1)
@@ -34,6 +35,8 @@ enum BaseColor {
     }
     
     private enum Light {
+        static let hex_06C149 = UIColor(red: 6/255, green: 193/255, blue: 73/255, alpha: 1)
+        static let hex_000000 = UIColor.black
         static let hex_E73626 = UIColor(red: 0.91, green: 0.21, blue: 0.15, alpha: 1)
         static let hex_ADAEB2 = UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 1)
         static let hex_FFFFFF = UIColor.white
@@ -45,6 +48,8 @@ enum BaseColor {
     }
     
     private enum Dark {
+        static let hex_06C149 = UIColor(red: 6/255, green: 193/255, blue: 73/255, alpha: 1)
+        static let hex_000000 = UIColor.black
         static let hex_E73626 = UIColor(red: 0.91, green: 0.21, blue: 0.15, alpha: 1)
         static let hex_ADAEB2 = UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 1)
         static let hex_FFFFFF = UIColor.white

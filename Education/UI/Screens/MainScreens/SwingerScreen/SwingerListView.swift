@@ -10,6 +10,11 @@ final class SwingerListView: UIView {
         return view
     }()
     
+    private var footerView: SwingerFooterView = {
+        let footerView = SwingerFooterView()
+        return footerView
+    }()
+    
     private var elements: [MainStruct] = []
 
     
@@ -78,6 +83,11 @@ final class SwingerListView: UIView {
             make.bottom.equalToSuperview()
             
         }
+        
+        footerView.snp.makeConstraints { (make) in
+            make.height.width.equalTo(90)
+            
+        }
 
     }
     
@@ -100,6 +110,15 @@ extension SwingerListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: SwingerTableViewCell.self, for: indexPath)
         cell.configure(data: elements[indexPath.row])
+        
+        
+        if(indexPath.row == elements.count-1){
+            
+//            let footer = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+//            footer.backgroundColor = .red
+            tableView.tableFooterView = SwingerFooterView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            //footer.startAnimating()
+        }
 //        cell.clickAction = { [weak self] in
 //            if let model = self?.elements[indexPath.row] {
 //                self?.events.send(.buttonClicked(model))
