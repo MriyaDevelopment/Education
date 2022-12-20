@@ -38,9 +38,9 @@ final class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(model: MainStruct) {
-        label.text = model.titleText
-        imageView.image = model.backgroundImage
+    func configure(model: Result) {
+        label.text = model.name
+      //  imageView.image = model.image
     }
     
     

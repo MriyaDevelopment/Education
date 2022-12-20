@@ -10,7 +10,7 @@ final class SwingerListView: UIView {
         return view
     }()
     
-    private var elements: [MainStruct] = []
+    private var elements: [Result] = []
 
     
  
@@ -83,7 +83,7 @@ final class SwingerListView: UIView {
     
    
 
-    func configure(elements: [MainStruct]) {
+    func configure(elements: [Result]) {
         self.elements = elements
         print("Запуск \(elements.count)")
         tableView.reloadData()

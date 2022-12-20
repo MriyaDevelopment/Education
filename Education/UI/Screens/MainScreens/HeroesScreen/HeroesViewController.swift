@@ -1,14 +1,15 @@
 //
-//  MainScreenViewController.swift
+//  HeroesViewController.swift
 //  Education
 //
-//  Created by Nikita Ezhov on 30.09.2022.
+//  Created by Роман Приладных on 08.11.2022.
 //
+
 
 import UIKit
 import Combine
 
-final class MainViewController<View: MainView>: BaseViewController<View> {
+final class HeroesViewController<View: HeroesView>: BaseViewController<View> {
     
     var buttonClicked: ModelClosure?
     var cellClicked: ModelClosure?
@@ -16,7 +17,7 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     private var provider: ProviderProtocol
    
     private var cancalables = Set<AnyCancellable>()
-    private var elements: [MainStruct] = []
+    private var elements: [Result] = []
     
     
     init(provider: ProviderProtocol) {
@@ -35,7 +36,7 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        provider.getArticles()
+        provider.getCharacters()
         subscribeForUpdates()
     }
     
@@ -51,7 +52,7 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
     
     private func onProviderEvents(_ event: ProviderEvent) {
         switch event {
-        case .getArticlesSuccess(_):
+        case .getCharactersSuccess(_):
             guard let articles = provider.stateArticles.value.articlesResponse else { return }
             rootView.configure(elements: articles)
         case .errorMessage(let error):
@@ -61,5 +62,3 @@ final class MainViewController<View: MainView>: BaseViewController<View> {
         }
     }
 }
-
-

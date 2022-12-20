@@ -5,6 +5,12 @@
 //  Created by Nikita Ezhov on 06.11.2022.
 //
 
+// Есть метод .receive - он означает в каком потоке (потоков бывает множествао, есть главный поток, есть глобал поток + можно насоздавать много кастомных потоков)
+
+//RunLoop.main - просто ЮАЙ поток
+// .sink - сюда сливаются даннные которые мы плучаем с бэка
+// кейс .failure - если пришел от комбайна фейлур, это означает что ошибка сети (как правило)
+
 import Foundation
 import Combine
 
@@ -14,7 +20,7 @@ protocol ProviderProtocol {
     var stateArticles: CurrentValueSubject<ArticlesState, Never> { get }
 
 
-    func getArticles()
+    func getCharacters()
 }
 
 final class ProviderImpl: ProviderProtocol {
@@ -29,10 +35,10 @@ final class ProviderImpl: ProviderProtocol {
         self.service = service
     }
     
-    func getArticles() {
+    func getCharacters() {
         articleRequest?.cancel()
         
-        articleRequest = service.getArticles()
+        articleRequest = service.getCharacters()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] result in
                 guard let self = self, case .failure(let error) = result else { return }
@@ -40,17 +46,12 @@ final class ProviderImpl: ProviderProtocol {
                 
             }, receiveValue: { [weak self] result in
                 guard let self = self else { return }
-                
-                switch result.result {
-                case "error":
-                    self.events.send(.errorMessage(result.error))
-                case "success":
-                    self.stateArticles.value = self.stateArticles.value
-                        .with(articlesResponse: result.articles)
-                    self.events.send(.getArticlesSuccess(result))
-                default:
-                    break
-                }
+   
+                self.stateArticles.value = self.stateArticles.value
+                       .with(articlesResponse: result.results)
+                self.events.send(.getCharactersSuccess(result))
+              
+               
             })
     }
 }
@@ -58,17 +59,17 @@ final class ProviderImpl: ProviderProtocol {
 enum ProviderEvent {
     case error(_ error: ApiError)
     case errorMessage(_ errorMessage: String?)
-    case getArticlesSuccess(_ response: ArticlesResponse)
+    case getCharactersSuccess(_ response: CharacterResponse)
 }
 
 struct ArticlesState {
-    var articlesResponse: [Article]?
+    var articlesResponse: [Result]?
     
     static let inital = ArticlesState(
         articlesResponse: nil
     )
     
-    func with(articlesResponse: [Article]?) -> Self {
+    func with(articlesResponse: [Result]?) -> Self {
         ArticlesState(
             articlesResponse: articlesResponse
         )

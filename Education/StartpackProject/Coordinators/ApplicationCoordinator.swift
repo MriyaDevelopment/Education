@@ -33,7 +33,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
     
     private func showMainFlow() {
-        let coordinator = coordinatorFactory.makeMainCoordinator(router: router)
+        let coordinator = coordinatorFactory.makeCharactersCoordinator(router: router)
         self.addDependency(coordinator)
         coordinator.start()
         

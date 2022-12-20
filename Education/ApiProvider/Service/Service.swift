@@ -5,11 +5,14 @@
 //  Created by Nikita Ezhov on 06.11.2022.
 //
 
+//Service - отвечает за обработку ошибок API. Промежуточный слой. Ничего делать не надо просто повторять по подобию.
+// eraseToAnyPublisher() - чисто реактивная история, даёт возможность подписаться на изменения (приход данных с бэка)
+
 import Foundation
 import Combine
 
 protocol ServiceProtocol {
-    func getArticles() -> AnyPublisher<ArticlesResponse, ApiError>
+    func getCharacters() -> AnyPublisher<CharacterResponse, ApiError>
 }
 
 class Service: ServiceProtocol {
@@ -21,10 +24,10 @@ class Service: ServiceProtocol {
         self.apiClient = apiClient
     }
     
-    func getArticles() -> AnyPublisher<ArticlesResponse, ApiError> {
+    func getCharacters() -> AnyPublisher<CharacterResponse, ApiError> {
         articleRequest?.cancel()
         
-        return apiClient.getArticles()
+        return apiClient.getCharacters()
             .mapError { error in
                 if let error = error as? ApiError {
                     return error

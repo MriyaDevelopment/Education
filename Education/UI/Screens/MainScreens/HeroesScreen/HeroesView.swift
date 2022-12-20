@@ -1,16 +1,14 @@
 //
-//  MainScreenView.swift
+//  HeroesView.swift
 //  Education
 //
-//  Created by Nikita Ezhov on 30.09.2022.
+//  Created by Роман Приладных on 08.11.2022.
 //
-
-
 
 import UIKit
 import Combine
 
-final class MainView: UIView {
+final class HeroesView: UIView {
 
     let events = PassthroughSubject<MainScreenViewEvents, Never>()
 
@@ -19,7 +17,7 @@ final class MainView: UIView {
         return view
     }()
     
-    private var elements: [Article] = []
+    private var elements: [Result] = []
 
     
  
@@ -52,7 +50,7 @@ final class MainView: UIView {
         return layout
     }()
     
-    lazy private var mainCollectionView: UICollectionView = {
+    lazy private var HeroesCollectionView: UICollectionView = {
         let layout = gridLayout
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -60,7 +58,7 @@ final class MainView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
        
-        collectionView.register(MainCollectionViewCell.self)
+        collectionView.register(HeroesCollectionViewCell.self)
         collectionView.showsVerticalScrollIndicator = false
   
         collectionView.alwaysBounceVertical = true
@@ -82,7 +80,7 @@ final class MainView: UIView {
 
         addSubview(contentView)
         contentView.addSubview(subTitleLabel)
-        contentView.addSubview(mainCollectionView)
+        contentView.addSubview(HeroesCollectionView)
 
         makeConstraints()
     }
@@ -100,7 +98,7 @@ final class MainView: UIView {
             make.left.top.equalToSuperview().inset(15)
         }
         
-        mainCollectionView.snp.makeConstraints { (make) in
+        HeroesCollectionView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(subTitleLabel.snp.bottom).offset(5)
         
@@ -110,23 +108,23 @@ final class MainView: UIView {
 
     }
 
-    func configure(elements: [Article]) {
+    func configure(elements: [Result]) {
         self.elements = elements
         print("Запуск \(self.elements.count)")
-        mainCollectionView.reloadData()
+        HeroesCollectionView.reloadData()
     }
     
 }
 
-extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HeroesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return elements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCollectionReusableCell(withType: MainCollectionViewCell.self, for: indexPath)
-        cell.configure(item: elements[indexPath.row])
+        let cell = collectionView.dequeueCollectionReusableCell(withType: HeroesCollectionViewCell.self, for: indexPath)
+//        cell.configure(item: elements[indexPath.row])
         cell.clickAction = { [weak self] in
             if let model = self?.elements[indexPath.row] {
 //                self?.events.send(.buttonClicked(model))
@@ -138,4 +136,11 @@ extension MainView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 //        events.send(.cellClicked(elements[indexPath.row]))
        }
 }
+
+        
+        
+     
+        
+        
+    
 

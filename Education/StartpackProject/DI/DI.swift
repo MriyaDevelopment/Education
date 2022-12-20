@@ -64,18 +64,20 @@ protocol ScreenFactoryProtocol {
         
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView>
     
-    func makeMainScreen() -> MainViewController<MainView>
+    func makeCharactersScreen() -> CharactersViewController<CharactersView>
     
-    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView>
+    func makeDetailScreen(model: Result) -> DetailViewController<DetailView>
     
     func makeFreeScreen() -> DetailTableViewController<DetailTableView>
     
     func makeSwingerScreen() -> SwingerListViewController<SwingerListView>
     
+    func makeHeroesScreen() -> HeroesViewController<HeroesView>
+    
 }
 
 final class ScreenFactory: ScreenFactoryProtocol {
-
+  
     fileprivate weak var di: Di!
     fileprivate init() {}
         
@@ -94,20 +96,24 @@ final class ScreenFactory: ScreenFactoryProtocol {
     func makeLoginScreen() -> LoginViewController<LoginScreenView> {
         LoginViewController<LoginScreenView>()
     }
-    func makeMainScreen() -> MainViewController<MainView> {
-        MainViewController<MainView>(provider: di.provider)
+    func makeCharactersScreen() -> CharactersViewController<CharactersView> {
+        CharactersViewController<CharactersView>(provider: di.provider)
     }
     
-    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView> {
+    func makeDetailScreen(model: Result) -> DetailViewController<DetailView> {
         DetailViewController<DetailView>(model: model)
     }
+    func makeHeroesScreen() -> HeroesViewController<HeroesView> {
+        HeroesViewController<HeroesView>(provider: di.provider)
+    }
+    
     
 }
 
 protocol CoordinatorFactoryProtocol {
     func makeApplicationCoordinator(router: RouterProtocol) -> ApplicationCoordinator
     func makeStartCoordinator(router: RouterProtocol) -> StartCoordinator 
-    func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator
+    func makeCharactersCoordinator(router: RouterProtocol) -> CharactersCoordinator
 }
 
 final class CoordinatorFactory: CoordinatorFactoryProtocol {
@@ -126,8 +132,8 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
         StartCoordinator(router: router, screenFactory: screenFactory)
     }
     
-    func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator {
-        MainCoordinator(router: router, screenFactory: screenFactory)
+    func makeCharactersCoordinator(router: RouterProtocol) -> CharactersCoordinator {
+        CharactersCoordinator(router: router, screenFactory: screenFactory)
         
     }
 }

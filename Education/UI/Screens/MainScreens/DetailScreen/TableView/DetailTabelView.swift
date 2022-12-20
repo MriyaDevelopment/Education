@@ -41,11 +41,11 @@ final class DetailTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(model: MainStruct) {
+    func configure(model: Result) {
 //        label.text = model.titleText
         
-        imageView.image = model.backgroundImage
-        print("Запуск пизды с таблицы \(model.subtitleText)")
+//        imageView.image = model.backgroundImage
+//        print("Запуск пизды с таблицы \(model.subtitleText)")
     }
     
     

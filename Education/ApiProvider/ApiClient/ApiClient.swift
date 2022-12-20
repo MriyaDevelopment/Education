@@ -1,28 +1,24 @@
-//
-//  ApiClient.swift
-//  Education
-//
-//  Created by Nikita Ezhov on 06.11.2022.
-//
-
 import Foundation
 import Combine
 
+//AnyPublisher это комбайновская обертка чтобы реактивно обрабатывать запросы с бэка
+
 protocol ApiClientProtocol {
-    func getArticles() -> AnyPublisher<ArticlesResponse, Error>
+    func getCharacters() -> AnyPublisher<CharacterResponse, Error>
 }
 
+// Прописывает путь к конкретному файлу который хранится на бэке
 private func getPath(for method: String) -> String {
-    return "/public/api/\(method)"
+    return "/api/\(method)"
 }
 
 extension ApiClient: ApiClientProtocol {
     
 //MARK: GET methods
     
-    func getArticles() -> AnyPublisher<ArticlesResponse, Error> {
+    func getCharacters() -> AnyPublisher<CharacterResponse, Error> {
         let request = requestBuilder.requestBuild(
-            path: getPath(for: "getArticles"),
+            path: getPath(for: "character"),
             urlParametrs: [:])
         return performRequest(request)
     }

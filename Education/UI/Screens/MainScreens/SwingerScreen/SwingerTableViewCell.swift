@@ -90,9 +90,9 @@ final class SwingerTableViewCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    func configure(data: MainStruct){
-        titleLabel.text = data.subtitleText.firstCapitalized
-        instrumentImageView.image = data.backgroundImage
+    func configure(data: Result){
+//        titleLabel.text = data.subtitleText.firstCapitalized
+//        instrumentImageView.image = data.backgroundImage
 //        descriptionLabel.text = data.full_text
 //        isLiked = data.is_liked ?? false
         
