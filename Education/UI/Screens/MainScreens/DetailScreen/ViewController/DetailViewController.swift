@@ -9,9 +9,9 @@ import UIKit
 
 final class DetailViewController<View: DetailView>: BaseViewController<View> {
     
-    private var model: MainStruct
+    private var model: Result
     
-    init(model: MainStruct) {
+    init(model: Result) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
     }

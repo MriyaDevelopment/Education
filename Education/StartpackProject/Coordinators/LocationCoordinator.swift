@@ -27,9 +27,9 @@ final class LocationCoordinator: BaseCoordinator {
     }
     private func showMainScreen() {
         let screen = screenFactory.makeLocationScreen()
-        screen.buttonClicked = { [weak self] model in
-            self?.showDetailScreen(model: model)
-        }
+//        screen.buttonClicked = { [weak self] model in
+//            self?.showDetailScreen(model: model)
+//        }
         screen.switchToEpisode = { [weak self] in
             self?.switchToProfileTab()
             
@@ -38,21 +38,18 @@ final class LocationCoordinator: BaseCoordinator {
     }
     
     
-    private func showDetailScreen(model: MainStruct) {
-        let screen = screenFactory.makeDetailScreen(model: model)
-        router.push(screen, animated: true)
+    private func showDetailScreen() {
+//        let screen = screenFactory.makeDetailScreen(model: model)
+//        router.push(screen, animated: true)
       
     }
     
     private func showSwingerList() {
-        let screen = screenFactory.makeSwingerScreen()
-        router.push(screen, animated: true)
-      
-        router.push(screen, animated: true)
+     
 
     }
      
-    private func showDetailScreen2(model: MainStruct) {
+    private func showDetailScreen2() {
 //        let screen = screenFactory.makeDetailTableScreen(model: model)
 //        router.push(screen, animated: true)
         

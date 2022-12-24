@@ -64,20 +64,21 @@ protocol ScreenFactoryProtocol {
         
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView>
     
-    func makeMainScreen() -> MainViewController<MainView>
+    func makeCharactersScreen() -> CharactersViewController<CharactersView>
     
     func makeLocationScreen() -> LocationViewController<LocationView>
     
-    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView>
+    func makeDetailScreen(model: Result) -> DetailViewController<DetailView>
     
     func makeFreeScreen() -> DetailTableViewController<DetailTableView>
     
-    func makeSwingerScreen() -> SwingerListViewController<SwingerListView>
+    func makeHeroesScreen() -> HeroesViewController<HeroesView>
     
 }
 
 final class ScreenFactory: ScreenFactoryProtocol {
     
+  
     fileprivate weak var di: Di!
     fileprivate init() {}
     
@@ -89,34 +90,32 @@ final class ScreenFactory: ScreenFactoryProtocol {
         DetailTableViewController<DetailTableView>()
     }
     
-
-    
-    func makeSwingerScreen() -> SwingerListViewController<SwingerListView> {
-        SwingerListViewController<SwingerListView>()
-    }
-    
-    
     func makeLaunchScreen() -> LaunchScreenViewController<LaunchScreenView> {
         LaunchScreenViewController<LaunchScreenView>()
     }
     func makeLoginScreen() -> LoginViewController<LoginScreenView> {
         LoginViewController<LoginScreenView>()
     }
-    func makeMainScreen() -> MainViewController<MainView> {
-        MainViewController<MainView>()
+ 
+    func makeCharactersScreen() -> CharactersViewController<CharactersView> {
+        CharactersViewController<CharactersView>(provider: di.provider)
     }
     
-    func makeDetailScreen(model: MainStruct) -> DetailViewController<DetailView> {
+    func makeDetailScreen(model: Result) -> DetailViewController<DetailView> {
         DetailViewController<DetailView>(model: model)
     }
+    func makeHeroesScreen() -> HeroesViewController<HeroesView> {
+        HeroesViewController<HeroesView>(provider: di.provider)
+    }
+    
     
 }
 
 protocol CoordinatorFactoryProtocol {
     func makeApplicationCoordinator(router: RouterProtocol) -> ApplicationCoordinator
-    func makeStartCoordinator(router: RouterProtocol) -> StartCoordinator 
-    func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator
+    func makeStartCoordinator(router: RouterProtocol) -> StartCoordinator
     func makeTabCoordinator(router: RouterProtocol) -> TabCoordinator
+  
 }
 
 final class CoordinatorFactory: CoordinatorFactoryProtocol {
@@ -140,8 +139,4 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
         return TabCoordinator(tabBarController: tabBarController, router: router, screenFactory: screenFactory)
     }
     
-    func makeMainCoordinator(router: RouterProtocol) -> MainCoordinator {
-        MainCoordinator(router: router, screenFactory: screenFactory)
-        
-    }
 }

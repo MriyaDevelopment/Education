@@ -7,16 +7,18 @@
 
 import Foundation
 
-final class MainCoordinator: BaseCoordinator {
+final class CharactersCoordinator: BaseCoordinator {
     
     var finishFlow: VoidClosure?
     
     private let screenFactory: ScreenFactoryProtocol
     private let router: RouterProtocol
+    private let switchToProfileTab: VoidClosure
     
-    init(router: RouterProtocol, screenFactory: ScreenFactoryProtocol) {
+    init(router: RouterProtocol, screenFactory: ScreenFactoryProtocol, switchToProfileTab: @escaping VoidClosure) {
         self.screenFactory = screenFactory
         self.router = router
+        self.switchToProfileTab = switchToProfileTab
     }
     
     override func start() {
@@ -24,29 +26,30 @@ final class MainCoordinator: BaseCoordinator {
    
     }
     private func showMainScreen() {
-        let screen = screenFactory.makeMainScreen()
+    
 //        screen.buttonClicked = { [weak self] model in
 //            self?.showDetailScreen(model: model)
 //        }
+        let screen = screenFactory.makeCharactersScreen()
+        screen.buttonClicked = { [weak self] model in
+            self?.showDetailScreen(model: model)
+        }
         router.setRootModule(screen, hideBar: true)
     }
     
     
-    private func showDetailScreen(model: MainStruct) {
+    private func showDetailScreen(model: Result) {
         let screen = screenFactory.makeDetailScreen(model: model)
         router.push(screen, animated: true)
       
     }
     
     private func showSwingerList() {
-        let screen = screenFactory.makeSwingerScreen()
-        router.push(screen, animated: true)
-      
-        router.push(screen, animated: true)
+       
 
     }
      
-    private func showDetailScreen2(model: MainStruct) {
+    private func showDetailScreen2(model: Result) {
 //        let screen = screenFactory.makeDetailTableScreen(model: model)
 //        router.push(screen, animated: true)
         

@@ -1,19 +1,13 @@
-//
-//  MainCollectionViewCell.swift
-//  Education
-//
-//  Created by Роман Приладных on 05.10.2022.
-//
-
 import UIKit
 
-final class MainCollectionViewCell: UICollectionViewCell {
+final class CharactersCollectionViewCell: UICollectionViewCell {
     
     var clickAction: VoidClosure?
 
     private var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .red
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
@@ -30,7 +24,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         let label = UIButton()
         label.layer.borderColor = UIColor.systemBlue.cgColor
         label.layer.borderWidth = 2.0
-        label.setTitleColor(.red, for: .normal)
+        label.backgroundColor = .green
         label.layer.cornerRadius = 10.0
         return label
     }()
@@ -53,10 +47,10 @@ final class MainCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func configure(item: Location) {
+    func configure(item: Result) {
         self.titleLabel.text = item.name
-        self.button.setTitle(item.type, for: .normal)
-        //self.backgroundImageView.loadArticleImage(by: item.image ?? "")
+//        self.button.setTitle(item.status?.rawValue, for: .normal)
+        self.backgroundImageView.loadArticleImage(by: item.image ?? "")
     }
 
     
@@ -99,5 +93,3 @@ final class MainCollectionViewCell: UICollectionViewCell {
         
     }
 }
-
-

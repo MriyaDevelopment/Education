@@ -8,6 +8,6 @@
 import Foundation
 
 enum LocationScreenViewEvents {
-    case buttonClicked(MainStruct)
-    case cellClicked(MainStruct)
+    case buttonClicked(Void)
+    case cellClicked(Void)
 }

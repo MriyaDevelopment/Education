@@ -31,6 +31,9 @@ final class TabCoordinator: BaseCoordinator {
     lazy var switchToEpisodes = ({
         self.tabBarController.selectedIndex = 1
     })
+    lazy var switchToCharacters = ({
+        self.tabBarController.selectedIndex = 2
+    })
     
     init(tabBarController: UITabBarController, router: RouterProtocol, screenFactory: ScreenFactoryProtocol ) {
         self.tabBarController = tabBarController
@@ -60,17 +63,20 @@ final class TabCoordinator: BaseCoordinator {
         locationBarItem.setTitleTextAttributes(unselectedItemTitle, for: .normal)
         locationBarItem.setTitleTextAttributes(selectedItemTitle, for: .selected)
         
+        
+        
+        
         //MARK: Locations
-        let locationsNavigationController2 = UINavigationController()
-        let locationBarItem2 = UITabBarItem(title: titlesTabBarItem.location.rawValue,
+        let charactersNavigationController = UINavigationController()
+        let charactersBarItem = UITabBarItem(title: titlesTabBarItem.location.rawValue,
                                        image: AppIcons.getIcon(.i_email_icon),
                                        selectedImage: AppIcons.getIcon(.i_eye_image).setColor(BaseColor.hex_F1F1F1.uiColor()))
-        locationsNavigationController2.tabBarItem = locationBarItem
-        let locationRouter2 = Router(rootController: locationsNavigationController2)
-        let locationCoordinator2 = LocationCoordinator(router: locationRouter2, screenFactory: screenFactory, switchToProfileTab: switchToEpisodes)
+        charactersNavigationController.tabBarItem = charactersBarItem
+        let charactersRouter = Router(rootController: charactersNavigationController)
+        let charactersCoordinator = CharactersCoordinator(router: charactersRouter, screenFactory: screenFactory, switchToProfileTab: switchToCharacters)
         
-        locationBarItem2.setTitleTextAttributes(unselectedItemTitle, for: .normal)
-        locationBarItem2.setTitleTextAttributes(selectedItemTitle, for: .selected)
+        charactersBarItem.setTitleTextAttributes(unselectedItemTitle, for: .normal)
+        charactersBarItem.setTitleTextAttributes(selectedItemTitle, for: .selected)
         
         //MARK: Challenges
 //        let challengesNavigationController = UINavigationController()
@@ -102,7 +108,7 @@ final class TabCoordinator: BaseCoordinator {
         
         tabBarController.viewControllers = [
             locationsNavigationController,
-            locationsNavigationController2
+            charactersNavigationController
         ]
         
         tabBarController.tabBar.tintColor = BaseColor.hex_ADAEB2.uiColor()
@@ -111,11 +117,11 @@ final class TabCoordinator: BaseCoordinator {
         router.present(tabBarController, animated: false)
         
         locationCoordinator.start()
-//        challengesCoordinator.start()
+        charactersCoordinator.start()
 //        favouritesCoordinator.start()
        
         self.addDependency(locationCoordinator)
-        self.addDependency(locationCoordinator2)
+        self.addDependency(charactersCoordinator)
 //        self.addDependency(challengesCoordinator)
 //        self.addDependency(favouritesCoordinator)
         

@@ -14,7 +14,7 @@ extension UIImageView {
             return
         }
         
-        let path = "http://ovz4.j04713753.pv29m.vps.myjino.ru/image/\(imageURL)"
+        let path = imageURL
         guard let url = URL(string: path) else {
             self.image = AppIcons.getIcon(.i_heart_input)
             return }

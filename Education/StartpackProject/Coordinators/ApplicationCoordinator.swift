@@ -22,26 +22,26 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
     
     private func runStartFlow() {
-//        let coordinator = coordinatorFactory.makeTabCoordinator(router: router)
-//        coordinator.finishFlow = { [weak self, weak coordinator] in
-//            guard let self = self else { return }
-//            self.start()
-//            self.removeDependency(coordinator)
-//        }
-        let coordinator = coordinatorFactory.makeStartCoordinator(router: router)
-        coordinator.finishFlow = { [weak self, weak coordinator]  in
+        let coordinator = coordinatorFactory.makeTabCoordinator(router: router)
+        coordinator.finishFlow = { [weak self, weak coordinator] in
             guard let self = self else { return }
-            self.showMainFlow()
+            self.start()
             self.removeDependency(coordinator)
         }
+//        let coordinator = coordinatorFactory.makeStartCoordinator(router: router)
+//        coordinator.finishFlow = { [weak self, weak coordinator]  in
+//            guard let self = self else { return }
+//            self.showMainFlow()
+//            self.removeDependency(coordinator)
+//        }
         self.addDependency(coordinator)
         coordinator.start()
     }
     
     private func showMainFlow() {
-        let coordinator = coordinatorFactory.makeMainCoordinator(router: router)
-        self.addDependency(coordinator)
-        coordinator.start()
+//        let coordinator = coordinatorFactory.makeCharactersCoordinator(router: router)
+//        self.addDependency(coordinator)
+//        coordinator.start()
         
     }
 }

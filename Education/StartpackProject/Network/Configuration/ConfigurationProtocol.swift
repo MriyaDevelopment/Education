@@ -36,3 +36,6 @@ struct ConfigurationTest: ConfigurationProtocol {
     let scheme: String = "https"
     let host = "rickandmortyapi.com"
 }
+
+
+
