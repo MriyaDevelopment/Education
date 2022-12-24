@@ -25,8 +25,8 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         let label = UIButton()
         label.layer.borderColor = BaseColor.hex_06C149.cgColor()
         label.layer.borderWidth = 2.0
-        label.setTitleColor(BaseColor.hex_06C149.uiColor(), for: .normal)
-        label.backgroundColor = .clear
+        label.setTitleColor(BaseColor.hex_FFFFFF.uiColor(), for: .normal)
+        label.backgroundColor = BaseColor.hex_06C149.uiColor()
         label.layer.cornerRadius = 10.0
         return label
     }()
