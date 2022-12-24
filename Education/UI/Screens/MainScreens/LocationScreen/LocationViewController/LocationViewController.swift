@@ -1,25 +1,25 @@
 //
-//  HeroesViewController.swift
+//  LocationViewController.swift
 //  Education
 //
-//  Created by Роман Приладных on 08.11.2022.
+//  Created by Илья Кузнецов on 08.11.2022.
 //
-
 
 import UIKit
 import Combine
+import SwiftUI
 
-final class HeroesViewController<View: HeroesView>: BaseViewController<View> {
+final class LocationViewController<View: LocationView>: BaseViewController<View> {
     
     var buttonClicked: ModelClosure?
     var cellClicked: ModelClosure?
     
+    var switchToEpisode: VoidClosure?
+    
     private var provider: ProviderProtocol
    
     private var cancalables = Set<AnyCancellable>()
-    private var elements: [Result] = []
-    
-    
+        
     init(provider: ProviderProtocol) {
         self.provider = provider
         super.init(nibName: nil, bundle: nil)
@@ -36,7 +36,10 @@ final class HeroesViewController<View: HeroesView>: BaseViewController<View> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        provider.getCharacters()
+        //Косяк - возможно не так цвет фона выставляю
+        view.backgroundColor = BaseColor.hex_000000.uiColor()
+        hideNavBar()
+        provider.getLocations()
         subscribeForUpdates()
     }
     
@@ -52,9 +55,11 @@ final class HeroesViewController<View: HeroesView>: BaseViewController<View> {
     
     private func onProviderEvents(_ event: ProviderEvent) {
         switch event {
-        case .getCharactersSuccess(_):
-            guard let articles = provider.stateCharacters.value.charactersResponse else { return }
-            rootView.configure(elements: articles)
+        case .getLocationSuccess(_):
+            guard let locations = provider.stateLocations.value.locationResponse else { return }
+            rootView.configure(elements: locations)
+            //switchToEpisode?()
+            
         case .errorMessage(let error):
             break
         default:
@@ -62,3 +67,5 @@ final class HeroesViewController<View: HeroesView>: BaseViewController<View> {
         }
     }
 }
+
+

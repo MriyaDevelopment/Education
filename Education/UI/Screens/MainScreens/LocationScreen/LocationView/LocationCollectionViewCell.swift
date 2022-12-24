@@ -1,37 +1,37 @@
 //
-//  MainCollectionViewCell.swift
+//  LocationCollectionViewCell.swift
 //  Education
 //
-//  Created by Роман Приладных on 05.10.2022.
+//  Created by Илья Кузнецов on 08.11.2022.
 //
 
 import UIKit
 
-final class CharactersCollectionViewCell: UICollectionViewCell {
+final class LocationCollectionViewCell: UICollectionViewCell {
     
     var clickAction: VoidClosure?
+    
 
     private var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.systemBlue
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textColor = BaseColor.hex_06C149.uiColor()
         label.numberOfLines = 2
         return label
     }()
     
     private var button: UIButton = {
         let label = UIButton()
-        label.layer.borderColor = UIColor.systemBlue.cgColor
+        label.layer.borderColor = BaseColor.hex_06C149.cgColor()
         label.layer.borderWidth = 2.0
-        label.backgroundColor = .green
+        label.setTitleColor(BaseColor.hex_06C149.uiColor(), for: .normal)
         label.layer.cornerRadius = 10.0
         return label
     }()
@@ -42,7 +42,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 14
-        layer.borderColor = UIColor.systemGray.cgColor
+        layer.borderColor = BaseColor.hex_06C149.cgColor()
         layer.borderWidth = 2.0
         clipsToBounds = true
         
@@ -54,10 +54,10 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func configure(item: Result) {
+    func configure(item: Location) {
         self.titleLabel.text = item.name
-//        self.button.setTitle(item.status?.rawValue, for: .normal)
-        self.backgroundImageView.loadArticleImage(by: item.image ?? "")
+        self.button.setTitle(item.type, for: .normal)
+        //self.backgroundImageView.loadArticleImage(by: item.image ?? "")
     }
 
     

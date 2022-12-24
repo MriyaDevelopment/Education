@@ -8,13 +8,28 @@
 // Все типы опциональные т.к это зачита если с бэка что-нибудь не придёт
 // При создании Респонс нужно соблюдать два важных условия. 1 - все поля респонса должны быть идентичны полям которые приходят с бэка.
 
+import UIKit
 import Foundation
 
+// MARK: - LocationModel
+struct LocationResponse: Codable {
+    let info: InfoLocation
+    let results: [Location]
+}
 
-struct Heroes: Codable {
-    let id: Int?
-    let name: String?
-    let status: String?
+// MARK: - Info
+struct InfoLocation: Codable {
+    let count, pages: Int
+    let next: String
+}
+
+// MARK: - Result
+struct Location: Codable {
+    let id: Int
+    let name, type, dimension: String
+    let residents: [String]
+    let url: String
+    let created: String
 }
 
 
@@ -47,7 +62,7 @@ struct Result: Codable {
     let species: Species
     let type: String
     let gender: Gender
-    let origin, location: Location
+    let origin, location: LocationCharacters
     let image: String
     let episode: [String]
     let url: String
@@ -61,7 +76,7 @@ enum Gender: String, Codable {
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct LocationCharacters: Codable {
     let name: String
     let url: String
 }
@@ -76,13 +91,3 @@ enum Status: String, Codable {
     case dead = "Dead"
     case unknown = "unknown"
 }
-
-//struct Article: Codable {
-//    let id: Int?
-//    let type: ArticleType?
-//    let image: String?
-//    let title: String?
-//    let description: String?
-//    let color: ColorType?
-//    let article_type: String?
-//}

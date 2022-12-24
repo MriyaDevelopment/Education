@@ -17,28 +17,33 @@ import Combine
 protocol ProviderProtocol {
     
     var events: PassthroughSubject<ProviderEvent, Never> { get }
-    var stateArticles: CurrentValueSubject<ArticlesState, Never> { get }
+    var stateLocations: CurrentValueSubject<LocationsState, Never> { get }
+    var stateCharacters: CurrentValueSubject<CharacterState, Never> { get }
 
 
+    func getLocations()
     func getCharacters()
 }
 
 final class ProviderImpl: ProviderProtocol {
     
     let events = PassthroughSubject<ProviderEvent, Never>()
-    let stateArticles = CurrentValueSubject<ArticlesState, Never>(ArticlesState.inital)
+    let stateLocations = CurrentValueSubject<LocationsState, Never>(LocationsState.inital)
+    let stateCharacters = CurrentValueSubject<CharacterState, Never>(CharacterState.inital)
     
     private let service: ServiceProtocol
-    private var articleRequest: AnyCancellable?
+    private var locationRequest: AnyCancellable?
+    private var episodesRequest: AnyCancellable?
+    private var heroesRequest: AnyCancellable?
         
     init(service: ServiceProtocol) {
         self.service = service
     }
     
-    func getCharacters() {
-        articleRequest?.cancel()
+    func getLocations() {
+        locationRequest?.cancel()
         
-        articleRequest = service.getCharacters()
+        locationRequest = service.getLocations()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] result in
                 guard let self = self, case .failure(let error) = result else { return }
@@ -46,9 +51,36 @@ final class ProviderImpl: ProviderProtocol {
                 
             }, receiveValue: { [weak self] result in
                 guard let self = self else { return }
+                
+                self.stateLocations.value = self.stateLocations.value
+                    .with(locationResponse: result.results)
+                self.events.send(.getLocationSuccess(result))
    
-                self.stateArticles.value = self.stateArticles.value
-                       .with(articlesResponse: result.results)
+                self.stateLocations.value = self.stateLocations.value
+                       .with(locationResponse: result.results)
+                self.events.send(.getLocationSuccess(result))
+              
+               
+            })
+    }
+    func getCharacters() {
+        heroesRequest?.cancel()
+        
+        heroesRequest = service.getCharacters()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] result in
+                guard let self = self, case .failure(let error) = result else { return }
+                self.events.send(.error(error))
+                
+            }, receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                
+                self.stateCharacters.value = self.stateCharacters.value
+                    .with(charactersResponse: result.results)
+                self.events.send(.getCharactersSuccess(result))
+   
+                self.stateCharacters.value = self.stateCharacters.value
+                       .with(charactersResponse: result.results)
                 self.events.send(.getCharactersSuccess(result))
               
                
@@ -59,19 +91,37 @@ final class ProviderImpl: ProviderProtocol {
 enum ProviderEvent {
     case error(_ error: ApiError)
     case errorMessage(_ errorMessage: String?)
+    case getLocationSuccess(_ response: LocationResponse)
     case getCharactersSuccess(_ response: CharacterResponse)
+    //case getHeroesSuccess()
+    //case getEpisodesSuccess()
 }
 
-struct ArticlesState {
-    var articlesResponse: [Result]?
+struct LocationsState {
+    var locationResponse: [Location]?
     
-    static let inital = ArticlesState(
-        articlesResponse: nil
+    static let inital = LocationsState(
+        locationResponse: nil
     )
     
-    func with(articlesResponse: [Result]?) -> Self {
-        ArticlesState(
-            articlesResponse: articlesResponse
+    func with(locationResponse: [Location]?) -> Self {
+        LocationsState(
+            locationResponse: locationResponse
         )
     }
 }
+
+struct CharacterState {
+    var charactersResponse: [Result]?
+    
+    static let inital = CharacterState(
+        charactersResponse: nil
+    )
+    
+    func with(charactersResponse: [Result]?) -> Self {
+        CharacterState(
+            charactersResponse: charactersResponse
+        )
+    }
+}
+

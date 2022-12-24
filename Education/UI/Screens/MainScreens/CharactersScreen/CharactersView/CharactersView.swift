@@ -138,4 +138,3 @@ extension CharactersView: UICollectionViewDelegate, UICollectionViewDataSource, 
 //        events.send(.cellClicked(elements[indexPath.row]))
        }
 }
-

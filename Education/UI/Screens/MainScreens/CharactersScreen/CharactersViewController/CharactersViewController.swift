@@ -35,6 +35,8 @@ final class CharactersViewController<View: CharactersView>: BaseViewController<V
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = BaseColor.hex_000000.uiColor()
+        hideNavBar()
         provider.getCharacters()
         subscribeForUpdates()
     }
@@ -52,7 +54,7 @@ final class CharactersViewController<View: CharactersView>: BaseViewController<V
     private func onProviderEvents(_ event: ProviderEvent) {
         switch event {
         case .getCharactersSuccess(_):
-            guard let articles = provider.stateArticles.value.articlesResponse else { return }
+            guard let articles = provider.stateCharacters.value.charactersResponse else { return }
             rootView.configure(elements: articles)
             print("Запуск \(articles[0].name)")
         case .errorMessage(let error):
