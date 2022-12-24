@@ -44,7 +44,7 @@ final class TabCoordinator: BaseCoordinator {
     override func start() {
         
         let selectedItemTitle: [NSAttributedString.Key : Any] =
-            [NSAttributedString.Key.foregroundColor: BaseColor.hex_FFFFFF.uiColor(),
+            [NSAttributedString.Key.foregroundColor: BaseColor.hex_06C149.uiColor(),
              NSAttributedString.Key.font: MainFont.semiBold(size: 12)]
         
         let unselectedItemTitle: [NSAttributedString.Key : Any] =
@@ -55,7 +55,7 @@ final class TabCoordinator: BaseCoordinator {
         let locationsNavigationController = UINavigationController()
         let locationBarItem = UITabBarItem(title: titlesTabBarItem.location.rawValue,
                                        image: AppIcons.getIcon(.i_email_icon),
-                                       selectedImage: AppIcons.getIcon(.i_eye_image).setColor(BaseColor.hex_F1F1F1.uiColor()))
+                                       selectedImage: AppIcons.getIcon(.i_eye_image).setColor(BaseColor.hex_06C149.uiColor()))
         locationsNavigationController.tabBarItem = locationBarItem
         let locationRouter = Router(rootController: locationsNavigationController)
         let locationCoordinator = LocationCoordinator(router: locationRouter, screenFactory: screenFactory, switchToProfileTab: switchToEpisodes)
@@ -70,7 +70,7 @@ final class TabCoordinator: BaseCoordinator {
         let charactersNavigationController = UINavigationController()
         let charactersBarItem = UITabBarItem(title: titlesTabBarItem.location.rawValue,
                                        image: AppIcons.getIcon(.i_email_icon),
-                                       selectedImage: AppIcons.getIcon(.i_eye_image).setColor(BaseColor.hex_F1F1F1.uiColor()))
+                                       selectedImage: AppIcons.getIcon(.i_eye_image).setColor(BaseColor.hex_06C149.uiColor()))
         charactersNavigationController.tabBarItem = charactersBarItem
         let charactersRouter = Router(rootController: charactersNavigationController)
         let charactersCoordinator = CharactersCoordinator(router: charactersRouter, screenFactory: screenFactory, switchToProfileTab: switchToCharacters)
@@ -111,7 +111,8 @@ final class TabCoordinator: BaseCoordinator {
             charactersNavigationController
         ]
         
-        tabBarController.tabBar.tintColor = BaseColor.hex_ADAEB2.uiColor()
+        //Косяк - не знаю зачем тогда цвета на 73 и 58 выставлять
+        tabBarController.tabBar.tintColor = BaseColor.hex_06C149.uiColor()
         
         tabBarController.modalPresentationStyle = .fullScreen
         router.present(tabBarController, animated: false)

@@ -503,7 +503,7 @@
 				242B8E01291AAC2F0074378F /* HeroesScreen */,
 				242508BD291432DB00E1CD27 /* SwingerScreen */,
 				63D7211E28E7524F0026D7E5 /* DetailScreen */,
-				63D7211D28E752420026D7E5 /* MainScreen */,
+				63D7211D28E752420026D7E5 /* CharactersScreen */,
 			);
 			path = MainScreens;
 			sourceTree = "<group>";
@@ -524,21 +524,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		63D720F828E735D40026D7E5 /* MainViewController */ = {
+		63D720F828E735D40026D7E5 /* CharactersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				63D7210028E735FF0026D7E5 /* CharactersViewController.swift */,
 			);
-			path = MainViewController;
+			path = CharactersViewController;
 			sourceTree = "<group>";
 		};
-		63D720F928E735D80026D7E5 /* MainView */ = {
+		63D720F928E735D80026D7E5 /* CharactersView */ = {
 			isa = PBXGroup;
 			children = (
 				63D720FE28E735F60026D7E5 /* CharactersView.swift */,
 				24142E8328ED86E700873E82 /* CharactersCollectionViewCell.swift */,
 			);
-			path = MainView;
+			path = CharactersView;
 			sourceTree = "<group>";
 		};
 		63D7210228E736E30026D7E5 /* HelperUI */ = {
@@ -582,14 +582,14 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		63D7211D28E752420026D7E5 /* MainScreen */ = {
+		63D7211D28E752420026D7E5 /* CharactersScreen */ = {
 			isa = PBXGroup;
 			children = (
 				63D7211A28E74F2E0026D7E5 /* DataModel */,
-				63D720F928E735D80026D7E5 /* MainView */,
-				63D720F828E735D40026D7E5 /* MainViewController */,
+				63D720F928E735D80026D7E5 /* CharactersView */,
+				63D720F828E735D40026D7E5 /* CharactersViewController */,
 			);
-			path = MainScreen;
+			path = CharactersScreen;
 			sourceTree = "<group>";
 		};
 		63D7211E28E7524F0026D7E5 /* DetailScreen */ = {

@@ -35,6 +35,8 @@ final class CharactersViewController<View: CharactersView>: BaseViewController<V
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = BaseColor.hex_000000.uiColor()
+        hideNavBar()
         provider.getCharacters()
         subscribeForUpdates()
     }

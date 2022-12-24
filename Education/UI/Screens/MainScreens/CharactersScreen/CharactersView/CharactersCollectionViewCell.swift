@@ -6,7 +6,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
 
     private var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .red
         imageView.isUserInteractionEnabled = true
         return imageView
@@ -15,16 +15,18 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.systemBlue
+        label.isHidden = true
+        label.textColor = BaseColor.hex_06C149.uiColor()
         label.numberOfLines = 2
         return label
     }()
     
     private var button: UIButton = {
         let label = UIButton()
-        label.layer.borderColor = UIColor.systemBlue.cgColor
+        label.layer.borderColor = BaseColor.hex_06C149.cgColor()
         label.layer.borderWidth = 2.0
-        label.backgroundColor = .green
+        label.setTitleColor(BaseColor.hex_06C149.uiColor(), for: .normal)
+        label.backgroundColor = .clear
         label.layer.cornerRadius = 10.0
         return label
     }()
@@ -35,7 +37,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 14
-        layer.borderColor = UIColor.systemGray.cgColor
+        layer.borderColor = BaseColor.hex_06C149.cgColor()
         layer.borderWidth = 2.0
         clipsToBounds = true
         
@@ -49,6 +51,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     func configure(item: Result) {
         self.titleLabel.text = item.name
+        self.button.setTitle(item.name, for: .normal)
 //        self.button.setTitle(item.status?.rawValue, for: .normal)
         self.backgroundImageView.loadArticleImage(by: item.image ?? "")
     }

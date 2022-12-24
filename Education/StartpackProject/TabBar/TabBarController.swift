@@ -13,8 +13,8 @@ final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = BaseColor.hex_FFFFFF.uiColor()
-        UITabBar.appearance().barTintColor = BaseColor.hex_FFFFFF.uiColor()
+        self.tabBar.barTintColor = BaseColor.hex_06C149.uiColor()
+        UITabBar.appearance().barTintColor = BaseColor.hex_06C149.uiColor()
         self.tabBar.clipsToBounds = true
     }
     
@@ -22,9 +22,8 @@ final class TabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.tabBar.backgroundColor = BaseColor.hex_FFFFFF.uiColor()
-        self.tabBar.layer.borderColor = BaseColor.hex_ADAEB2.cgColor()
-        self.tabBar.layer.borderWidth = 1
+        self.tabBar.backgroundColor = BaseColor.hex_000000.uiColor()
+      
     }
     
     private func setAppearance() {
@@ -39,10 +38,10 @@ final class TabBarController: UITabBarController {
             for: .selected)
 
         UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: BaseColor.hex_E73626.uiColor()],
+            [NSAttributedString.Key.foregroundColor: BaseColor.hex_06C149.uiColor()],
             for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: BaseColor.hex_A5A7AD.uiColor()],
+            [NSAttributedString.Key.foregroundColor: BaseColor.hex_06C149.uiColor()],
             for: .selected)
     }
 }

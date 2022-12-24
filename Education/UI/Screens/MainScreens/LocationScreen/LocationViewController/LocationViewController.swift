@@ -36,6 +36,7 @@ final class LocationViewController<View: LocationView>: BaseViewController<View>
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Косяк - возможно не так цвет фона выставляю
         view.backgroundColor = BaseColor.hex_000000.uiColor()
         hideNavBar()
         provider.getLocations()
